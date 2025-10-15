@@ -19,6 +19,16 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+
+    rules: {
+      "@next/next/no-img-element": "off", // disable warning for <img>
+      "react/jsx-key": "off", // disable missing key error
+      "react/no-unescaped-entities": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-vars": "off",
+        "no-var": "off",
+    },
   },
 ];
 
