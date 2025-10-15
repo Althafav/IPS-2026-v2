@@ -81,7 +81,8 @@ export default function ArticleCarousel({ codename, colorCode }: any) {
                   className="w-full h-full  object-cover aspect-square "
                 />
                 <div
-                  className={`bg-${colorCode} h-full p-10 flex flex-col justify-between`}
+                style={{backgroundColor: colorCode}}
+                  className={` h-full p-10 flex flex-col justify-between`}
                 >
                   <h2 className="sm:text-lg font-semibold mb-2 text-white">
                     {blog.heading.value}

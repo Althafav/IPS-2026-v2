@@ -10,11 +10,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` antialiased`}>
-        <MenuComponent2/>
-        {children}
-        <FooterComponent/>
-        </body>
+      <body className="antialiased min-h-screen flex flex-col">
+        {/* Header */}
+        <MenuComponent2 />
+
+        {/* Main Content (grows to fill space) */}
+        <main className="flex-1 min-h-screen">{children}</main>
+
+        {/* Footer (always at bottom) */}
+        <FooterComponent />
+      </body>
     </html>
   );
 }

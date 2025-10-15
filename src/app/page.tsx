@@ -47,8 +47,8 @@ export default async function Home() {
       <GallerySection items={pageData.galleryitems.value} />
 
       <PartnersCarousel />
-      <ArticleCarousel codename="blog_page_2026" colorCode="secondaryDark" />
-      <ArticleCarousel codename="news_page_2026" colorCode="primary" />
+      <ArticleCarousel codename="blog_page_2026" colorCode="#25B3AD" />
+      <ArticleCarousel codename="news_page_2026" colorCode="#F68A41" />
     </div>
   );
 }
