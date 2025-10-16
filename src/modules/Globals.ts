@@ -1,5 +1,6 @@
 import { TypeResolver } from "./TypeResolvers";
-import KontentDelivery from "@kentico/kontent-delivery"
+import * as KontentDelivery from "@kentico/kontent-delivery";
+
 
 export default class Globals {
     static PROJECT_ID: string = "6c08ae22-aaba-00c5-2884-7221a976fac0";

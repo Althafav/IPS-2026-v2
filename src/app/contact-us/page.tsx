@@ -2,7 +2,6 @@ import HeadBanner from "@/components/Blocks/HeadBanner";
 import FormComponent from "@/components/Form/FormComponent";
 import Section from "@/components/UI/Section";
 import Globals from "@/modules/Globals";
-
 import React from "react";
 
 async function getCountries() {
@@ -31,7 +30,7 @@ export default async function page(props: {
   const subsource = searchParams?.subsource ?? "";
 
   const [response, countries, countryCodes] = await Promise.all([
-    Globals.KontentClient.item("book_your_stand_form___demo")
+    Globals.KontentClient.item("contact_us_form___demo")
       .withParameter("depth", "4")
       .toPromise(),
     getCountries(),

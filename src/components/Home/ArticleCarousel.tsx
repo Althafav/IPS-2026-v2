@@ -6,21 +6,19 @@ import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
 import Image from "next/image";
 import Heading2 from "../UI/Heading2";
-import Section from "../UI/Section";
+
 import { MoveLeft, MoveRight } from "lucide-react";
 
 export default function ArticleCarousel({ codename, colorCode }: any) {
   const [pageData, setPageData] = useState<any | null>(null);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
-
+ 
   useEffect(() => {
     const sub = Globals.KontentClient.item(codename)
       .withParameter("depth", "4")
       .toObservable()
       .subscribe((res: any) => setPageData(res.item));
     return () => sub.unsubscribe?.();
-  }, []);
+  }, [codename]);
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "start" },

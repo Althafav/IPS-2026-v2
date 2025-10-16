@@ -9,7 +9,7 @@ export default function HeroSection({
   ctabuttons,
 }: any) {
   return (
-    <div className="relative w-full h-90vh] flex flex-col justify-center items-start text-start text-white overflow-hidden">
+    <div className="relative w-full h-[90vh] flex flex-col justify-center items-start text-start text-white overflow-hidden">
       {/* Background Video */}
       {bannervideo ? (
         <video

@@ -64,7 +64,11 @@ export default function MenuComponent2() {
                 width={100}
                 height={40}
                 className="object-contain"
-                src={pageData.ipslogo.value[0]?.url}
+                src={
+                  onLight
+                    ? pageData.ipslogo.value[0]?.url
+                    : pageData.ipslogowhite.value[0]?.url
+                }
                 alt={pageData.ipslogo.value[0]?.name}
                 priority
               />
@@ -76,7 +80,11 @@ export default function MenuComponent2() {
               width={120}
               height={48}
               className="object-contain hidden lg:block"
-              src={pageData.landdepartmentlogo.value[0]?.url}
+              src={
+                onLight
+                  ? pageData.landdepartmentlogo.value[0]?.url
+                  : pageData.landdepartmentlogowhite.value[0]?.url
+              }
               alt={pageData.landdepartmentlogo.value[0]?.name}
             />
           </div>
