@@ -19,7 +19,7 @@ export default class Globals {
     });
 
     static SITE_NAME = "IPS Congress";
-
+    static SITE_URL = "https://www.ipscongress.com/"
 
     static CURRENT_LANG_CODENAME: string = "default";
 
@@ -27,6 +27,6 @@ export default class Globals {
 
     static BASE_URL: string =
         process.env.NODE_ENV === "production"
-            ? "https://strategic-v2-omega.vercel.app/"
+            ? "https://ips-2026-v2.vercel.app/"
             : "http://localhost:3000/";
 }

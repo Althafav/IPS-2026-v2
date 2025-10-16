@@ -9,7 +9,7 @@ import Heading2 from "../UI/Heading2";
 
 import { MoveLeft, MoveRight } from "lucide-react";
 
-export default function ArticleCarousel({ codename, colorCode }: any) {
+export default function ArticleCarousel({ codename, colorCode, href }: any) {
   const [pageData, setPageData] = useState<any | null>(null);
  
   useEffect(() => {
@@ -59,7 +59,8 @@ export default function ArticleCarousel({ codename, colorCode }: any) {
         {/* Track */}
         <div className="flex touch-pan-y -mx-2">
           {blogs.map((blog: any) => (
-            <div
+            <Link
+            href={`${href}/${blog.slug.value}`}
               key={blog.system.id}
               className="
                 px-2
@@ -94,7 +95,7 @@ export default function ArticleCarousel({ codename, colorCode }: any) {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

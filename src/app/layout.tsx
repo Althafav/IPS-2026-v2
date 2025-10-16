@@ -3,6 +3,19 @@ import "./globals.css";
 import MenuComponent2 from "@/components/globals/Menu/MenuComponent2";
 import FooterComponent from "@/components/globals/FooterComponent";
 import Script from "next/script";
+import { Lato, Inter } from "next/font/google";
+
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["400", "700"], 
+  variable: "--font-lato",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-inter",
+});
 
 export default function RootLayout({
   children,
@@ -10,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${lato.variable} ${inter.variable}`}>
       <body className="antialiased min-h-screen flex flex-col">
         {/* Header */}
         <MenuComponent2 />

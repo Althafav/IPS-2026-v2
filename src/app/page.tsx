@@ -8,6 +8,7 @@ import PillarSection from "@/components/Home/PillarSection";
 import YtVideoSection from "@/components/Home/YtVideoSection";
 import Globals from "@/modules/Globals";
 
+
 export default async function Home() {
   const response = await Globals.KontentClient.item("home_page_2026_demo")
     .withParameter("depth", "4")
@@ -47,8 +48,8 @@ export default async function Home() {
       <GallerySection items={pageData.galleryitems.value} />
 
       <PartnersCarousel />
-      <ArticleCarousel codename="blog_page_2026" colorCode="#25B3AD" />
-      <ArticleCarousel codename="news_page_2026" colorCode="#F68A41" />
+      <ArticleCarousel codename="blog_page_2026" colorCode="#25B3AD" href="/blogs" />
+      <ArticleCarousel codename="news_page_2026" colorCode="#F68A41" href="/news"/>
     </div>
   );
 }

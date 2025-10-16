@@ -1,11 +1,25 @@
 @import "tailwindcss";
 
+:root {
+  --font-lato: "Lato", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
 @theme {
   --color-primary: #F68A41;
   --color-primaryDark: #f97f2e;
   --color-secondary: #25B3AD;
   --color-secondaryDark: #1db6af;
 
+}
+
+body {
+  font-family: var(--font-inter);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-lato);
 }
 
 .container {
@@ -45,3 +59,78 @@
     max-width: 1480px;
   }
 }
+
+
+/* OUTER: holds the floating button; no overflow so it won't clip */
+.blog-card {
+  --teal: #009999;              /* adjust to your brand (or replace with Tailwind var) */
+  position: relative;
+  border-radius: 24px;
+  padding-bottom: 28px;         /* space so the button doesn’t get cut off */
+  width: 100%;
+  max-width: 400px;             /* optional */
+   background: var(--teal);
+}
+
+/* INNER: teal area with rounded corners and inner white border */
+.blog-shell {
+
+  border-radius: 24px;
+  padding: 40px 0;
+  position: relative;
+}
+
+/* INNER white border (inset) */
+.blog-shell::before {
+  content: "";
+  position: absolute;
+  inset: 12px;                  /* increased from 8px for more breathing room */
+  border: 2px solid #fff;       /* thicker for clarity; tweak if needed */
+  border-radius: 18px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Image */
+.blog-image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Content */
+.blog-content {
+  padding: 24px;                /* more padding to match the reference spacing */
+  color: #fff;
+  position: relative;
+  z-index: 3;                   /* above the border pseudo-element */
+}
+
+.blog-content h4 {
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Floating button */
+.read-more-btn {
+  position: absolute;
+  left: 50%;
+  bottom: -16px;                /* overlaps the card edge */
+  transform: translateX(-50%);
+  background: #fff;
+  color: var(--teal);
+  border: none;
+  padding: 7px 22px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(0,0,0,.18);
+  cursor: pointer;
+  z-index: 4;                   /* above everything */
+  transition: transform .18s ease;
+}
+
+.read-more-btn:hover { transform: translateX(-50%) scale(1.04); }
