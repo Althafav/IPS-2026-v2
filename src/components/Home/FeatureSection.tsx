@@ -1,6 +1,7 @@
-import React from "react";
+"use client";
+import React, { useCallback, useEffect, useState } from "react";
 import Heading2 from "../UI/Heading2";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 
 export default function FeatureSection({
   heading,
@@ -8,6 +9,14 @@ export default function FeatureSection({
   items,
   backgroundImage,
 }: any) {
+  const [openItem, setOpenItem] = useState<any | null>(null);
+  useEffect(() => {
+    const original = document.body.style.overflow;
+    if (openItem) document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [openItem]);
   return (
     <div className="relative w-full">
       {/* Background image */}
@@ -22,20 +31,28 @@ export default function FeatureSection({
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 ">
           {items.map((item: any) => (
-            <FeatureCard title={item.name.value} key={item.system.id} />
+            <FeatureCard title={item.name.value} key={item.system.id}  onClick={() => setOpenItem(item)}/>
           ))}
         </div>
+
+        <Modal
+          open={!!openItem}
+          title={openItem?.name.value ?? ""}
+          html={openItem?.content?.value ?? ""}
+          onClose={() => setOpenItem(null)}
+        />
       </div>
     </div>
   );
 }
 
-function FeatureCard({ title }: { title: string }) {
+function FeatureCard({ title, onClick }: { title: string, onClick: () => void; }) {
   const CARD_PATH =
     "M1 98.5001V18.5001V10.0001C1 5.02953 5.02944 1.00009 10 1.00009L243.16 1C248.131 1 251.971 5.023 251.856 9.99223C251.548 23.2995 253.529 40.4663 280.619 37.3272C286.452 36.6512 292 40.8598 292 46.7317V98.5001C292 103.471 287.971 107.5 283 107.5H10C5.02944 107.5 1 103.471 1 98.5001Z";
 
   return (
-    <div className="relative group w-full aspect-[293/108] max-w-[360px] mx-auto">
+    <div
+      onClick={onClick}  aria-label={`${title} – open details`} className="relative group w-full aspect-[293/108] max-w-[360px] mx-auto">
       {/* SVG fills the box */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -96,6 +113,62 @@ function FeatureCard({ title }: { title: string }) {
       {/* Arrow badge anchors to the SAME box */}
       <div className="absolute -top-3 -right-3 bg-[#25B3AD] rounded-full p-2 shadow-xl transition-transform duration-300 group-hover:scale-110">
         <ArrowUpRight size={18} className="text-white" />
+      </div>
+    </div>
+  );
+}
+
+function Modal({
+  open,
+  title,
+  html,
+  onClose,
+}: {
+  open: boolean;
+  title: string;
+  html: string; // HTML string
+  onClose: () => void;
+}) {
+  const stop = useCallback((e: React.MouseEvent) => e.stopPropagation(), []);
+
+  if (!open) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center"
+      role="dialog"
+      aria-modal="true"
+      aria-label={title || "Details"}
+      onClick={onClose}
+    >
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+
+      {/* Card */}
+      <div
+        className="relative z-10 w-[92%] max-w-3xl max-h-[80vh] overflow-y-auto rounded-2xl bg-secondary p-5 text-white shadow-2xl"
+        onClick={stop}
+      >
+        {/* Close */}
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute top-3 right-3 inline-flex items-center justify-center rounded-full p-2 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/60"
+          aria-label="Close"
+        >
+          <X size={18} />
+        </button>
+
+        {/* Title (optional) */}
+        {title ? (
+          <h3 className="text-lg font-semibold pr-10 mb-3">{title}</h3>
+        ) : null}
+
+        {/* Rich text content */}
+        <div
+          className="prose text-white max-w-none [&>*:first-child]:mt-0"
+          dangerouslySetInnerHTML={{ __html: html || "<p>No content.</p>" }}
+        />
       </div>
     </div>
   );
