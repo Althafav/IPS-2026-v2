@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@plugin "@tailwindcss/typography";
 :root {
   --font-lato: "Lato", sans-serif;
   --font-inter: "Inter", sans-serif;
@@ -10,6 +10,7 @@
   --color-primaryDark: #f97f2e;
   --color-secondary: #25B3AD;
   --color-secondaryDark: #1db6af;
+  --color-dark: #151515;
 
 }
 

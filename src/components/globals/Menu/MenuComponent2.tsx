@@ -3,6 +3,8 @@ import Globals from "@/modules/Globals";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 export default function MenuComponent2() {
@@ -10,6 +12,8 @@ export default function MenuComponent2() {
   const [menuOpen, setmenuOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+ 
 
   useEffect(() => {
     const sub = Globals.KontentClient.item("global_component_2026")
@@ -51,9 +55,9 @@ export default function MenuComponent2() {
             aria-expanded={menuOpen}
           >
             {menuOpen ? (
-              <X className={onLight ? "text-black" : "text-white"} />
+              <X className={onLight || pathname === "/awards" ? "text-black" : "text-white"} />
             ) : (
-              <Menu className={onLight ? "text-black" : "text-white"} />
+              <Menu className={onLight || pathname === "/awards" ? "text-black" : "text-white"} />
             )}
           </button>
 
@@ -65,7 +69,7 @@ export default function MenuComponent2() {
                 height={40}
                 className="object-contain"
                 src={
-                  onLight
+                  onLight || pathname === "/awards"
                     ? pageData.ipslogo.value[0]?.url
                     : pageData.ipslogowhite.value[0]?.url
                 }
@@ -81,7 +85,7 @@ export default function MenuComponent2() {
               height={48}
               className="object-contain hidden lg:block"
               src={
-                onLight
+                onLight || pathname === "/awards"
                   ? pageData.landdepartmentlogo.value[0]?.url
                   : pageData.landdepartmentlogowhite.value[0]?.url
               }
@@ -97,7 +101,7 @@ export default function MenuComponent2() {
                 href={item.link?.value || "#"}
                 className={[
                   "px-4 py-2 rounded-full text-sm font-medium transition-colors",
-                  onLight
+                  onLight || pathname === "/awards"
                     ? "border-2 border-black text-black hover:bg-black hover:text-white"
                     : "border-2 border-white text-white hover:bg-white hover:text-black",
                 ].join(" ")}

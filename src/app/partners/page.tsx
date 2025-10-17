@@ -12,7 +12,7 @@ export default async function page() {
   const pageData = JSON.parse(JSON.stringify(response.item));
 
   return (
-    <div>
+    <div className="">
       <div className="relative h-[350px] py-20 flex items-end">
         <img
           src={pageData.bannerimage.value[0]?.url}
@@ -33,7 +33,7 @@ export default async function page() {
           <div className="partner-wrapper grid grid-cols-1 gap-20">
             {pageData.items.value.map((item: any, idx: number) => {
               return (
-                <div className="">
+                <div className="" key={idx}>
                   <div className=" text-center mb-5">
                     <h1 className=" text-2xl font-bold">
                       {item.heading.value}
