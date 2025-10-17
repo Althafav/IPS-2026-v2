@@ -35,20 +35,28 @@ export default async function page() {
                 <Link
                   href={`/blogs/${item.slug.value}`}
                   key={item.system.id}
-                  className="rounded-3xl bg-secondary"
+                  className="rounded-3xl overflow-hidden bg-secondary flex flex-col shadow-lg hover:shadow-2xl transition-shadow duration-300"
                 >
-                  <div>
+                  {/* Image Section */}
+                  <div className="relative">
                     <img
                       src={item.image.value[0]?.url}
                       alt={item.heading.value}
-                      className="w-full h-[240px] object-cover rounded-t-3xl"
+                      className="w-full h-[240px] object-cover"
                     />
+                    {/* Decorative Border */}
+                    <div className="absolute inset-3 border border-white/50 rounded-3xl pointer-events-none"></div>
                   </div>
 
-                  <div className="">
-                    <div className="p-5">
-                      <h4 className="text-white">{item.heading.value}</h4>
-                    </div>
+                  {/* Text Section */}
+                  <div className="bg-[#1DB6B1] p-6 flex flex-col justify-between flex-grow">
+                    <h4 className="text-white text-base leading-snug font-medium mb-6">
+                      {item.heading.value}
+                    </h4>
+
+                    <button className="self-center bg-white text-black text-sm px-6 py-2 rounded-full hover:bg-gray-100 transition-all">
+                      Read More
+                    </button>
                   </div>
                 </Link>
               );
