@@ -121,3 +121,8 @@ export default class formatParameter {
         return s;
     }
 }
+
+export function getCanonicalUrl(pathname: string = "/"): string {
+  const cleanPath = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  return `${Globals.BASE_URL}${cleanPath === "/" ? "" : cleanPath}`;
+}

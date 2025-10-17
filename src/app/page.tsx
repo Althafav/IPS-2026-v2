@@ -8,6 +8,40 @@ import PillarSection from "@/components/Home/PillarSection";
 import YtVideoSection from "@/components/Home/YtVideoSection";
 import Globals from "@/modules/Globals";
 
+export async function generateMetadata() {
+  const response = await Globals.KontentClient.item("home_page_2026_demo")
+    .withParameter("depth", "4")
+    .toPromise();
+  const pageData = JSON.parse(JSON.stringify(response.item));
+
+  return {
+    title: pageData.metadata__pagetitle.value,
+    description: pageData.metadata__metadescription.value,
+    alternates: {
+      canonical: Globals.BASE_URL,
+    },
+    openGraph: {
+      title: pageData.metadata__pagetitle.value,
+      description: pageData.metadata__metadescription.value,
+      url: Globals.BASE_URL,
+      siteName: Globals.SITE_NAME,
+      images: [
+        {
+          url: `${Globals.BASE_URL}assets/logos/ips-logo-thumbnail.jpg`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageData.metadata__pagetitle.value,
+      description: pageData.metadata__metadescription.value,
+      images: [`${Globals.BASE_URL}assets/logos/ips-logo-thumbnail.jpg`],
+    },
+  };
+}
 
 export default async function Home() {
   const response = await Globals.KontentClient.item("home_page_2026_demo")
@@ -48,8 +82,16 @@ export default async function Home() {
       <GallerySection items={pageData.galleryitems.value} />
 
       <PartnersCarousel />
-      <ArticleCarousel codename="blog_page_2026" colorCode="#25B3AD" href="/blogs" />
-      <ArticleCarousel codename="news_page_2026" colorCode="#F68A41" href="/news"/>
+      <ArticleCarousel
+        codename="blog_page_2026"
+        colorCode="#25B3AD"
+        href="/blogs"
+      />
+      <ArticleCarousel
+        codename="news_page_2026"
+        colorCode="#F68A41"
+        href="/news"
+      />
     </div>
   );
 }

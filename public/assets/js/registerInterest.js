@@ -24,7 +24,7 @@ window._show_thank_you = function (id, message, trackcmp_url, email) {
   form.querySelector("._form-content").style.display = "none";
   // thank_you.innerHTML = message;
   var firstname = $('input[name="firstname"]').val();
-  window.location.href = `/forms/thank-you?user=${firstname}`;
+  window.location.href = `/thank-you?user=${firstname}`;
   thank_you.style.display = "none";
   const vgoAlias =
     typeof visitorGlobalObjectAlias === "undefined"
