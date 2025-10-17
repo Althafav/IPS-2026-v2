@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef, useState } from "react";
-import Link from "next/link";
 
 type AccordionProps = {
   pageData: any | null;
@@ -14,7 +13,6 @@ export default function AwardsFAQAccordion({ pageData }: AccordionProps) {
   };
 
   const items: any[] = pageData?.faqitems?.value || [];
-
   if (!items.length) return null;
 
   return (
@@ -24,7 +22,7 @@ export default function AwardsFAQAccordion({ pageData }: AccordionProps) {
           {pageData?.faqheading?.value}
         </h2>
 
-        <div className="divide-y divide-white/10 rounded-2xl border border-black bg-white/5 backdrop-blur">
+        <div className="rounded-2xl border border-secondary bg-white/5 backdrop-blur">
           {items.map((raw: any, idx: number) => {
             const item = raw as any;
             const id = item?.system?.id ?? `faq_${idx}`;
@@ -34,7 +32,6 @@ export default function AwardsFAQAccordion({ pageData }: AccordionProps) {
               <AccordionRow
                 key={id}
                 id={id}
-                index={idx}
                 open={open}
                 title={item?.name?.value}
                 html={item?.content?.value}
@@ -48,49 +45,36 @@ export default function AwardsFAQAccordion({ pageData }: AccordionProps) {
   );
 }
 
-/* --- Row (kept separate to keep logic tidy) --- */
 function AccordionRow({
   id,
-  index,
   open,
   title,
   html,
   onToggle,
 }: {
   id: string;
-  index: number;
   open: boolean;
   title: string;
   html: string;
   onToggle: () => void;
 }) {
   const panelRef = useRef<HTMLDivElement>(null);
-
-  // For smooth height animation without extra libs
   const maxHeight = open ? `${panelRef.current?.scrollHeight ?? 0}px` : "0px";
 
   return (
-    <div className="group ">
-      {/* Header button */}
+    <div className={`group border-b border-secondary last:border-none`}>
       <button
         type="button"
-        className="w-full text-left px-4 sm:px-6 py-4 flex items-start justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+        className="w-full text-left px-4 sm:px-6 py-4 flex items-start justify-between gap-4 focus:outline-none"
         aria-expanded={open}
         aria-controls={`panel-${id}`}
         id={`control-${id}`}
         onClick={onToggle}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            onToggle();
-          }
-        }}
       >
-        <span className="text-base sm:text-lg font-semibold leading-snug">
+        <span className="text-base sm:text-lg font-semibold leading-snug text-black">
           {title}
         </span>
 
-        {/* Chevron */}
         <span
           className={`mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full text-secondary transition-transform duration-300 ${
             open ? "rotate-180" : "rotate-0"
@@ -110,19 +94,17 @@ function AccordionRow({
         </span>
       </button>
 
-      {/* Panel */}
       <div
         id={`panel-${id}`}
         role="region"
         aria-labelledby={`control-${id}`}
         ref={panelRef}
         style={{ maxHeight }}
-        className={`overflow-hidden transition-[max-height] duration-300 ease-in-out border-b border-black`}
+        className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
       >
         <div className="px-4 sm:px-6 pb-5 pt-1">
           <div
-            className="prose  max-w-none text-sm sm:text-base"
-            // keep your HTML (links, lists) intact
+            className="prose max-w-none text-sm sm:text-base text-black"
             dangerouslySetInnerHTML={{ __html: html || "" }}
           />
         </div>
