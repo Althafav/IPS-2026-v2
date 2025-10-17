@@ -15,7 +15,7 @@ export default function HeadBanner({
 
       <div className="container mx-auto">
         <div className="relative z-10 pt-10">
-          <h1 className="text-5xl font-bold mb-4 text-secondary">
+          <h1 className="text-5xl font-bold mb-4 text-secondary max-w-3xl">
             {bannerheading}
           </h1>
           <p className="text-white">{bannersubheading}</p>
