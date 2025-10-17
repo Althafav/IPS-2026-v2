@@ -6,11 +6,11 @@ export default function HeadBanner({
   bannersubheading,
 }: any) {
   return (
-    <div className="relative h-[300px] flex items-center">
+    <div className="relative h-[350px] flex items-center">
       <img
         src={bannerimage}
         alt={bannerheading}
-        className="w-full absolute inset-0 h-full object-cover brightness-25"
+        className="w-full absolute inset-0 h-full object-cover object-top brightness-25"
       />
 
       <div className="container mx-auto">
