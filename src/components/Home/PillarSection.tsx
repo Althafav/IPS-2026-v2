@@ -58,15 +58,17 @@ export default function PillarSection({
                 key={item?.system?.id ?? Math.random().toString(36)}
                 className="min-w-0 shrink-0 grow-0 basis-[80%] sm:basis-1/2 lg:basis-1/3 xl:basis-[417px] p-2"
               >
-                <div className="relative aspect-square overflow-hidden ">
+                <div className="group relative aspect-square overflow-hidden ">
                   <img
                     src={item?.image?.value?.[0]?.url ?? ""}
                     alt={item?.name?.value ?? ""}
-                    className="h-full w-full object-cover brightness-50"
+                    className="h-full w-full object-cover brightness-50 transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 z-10 text-center flex justify-center items-center">
-                    <h3 className="text-3xl text-white">{item.name.value}</h3>
+                  <div className="absolute inset-0 flex items-center justify-center text-center transition-all duration-500">
+                    <h3 className="text-3xl text-white font-semibold">
+                      {item.name.value}
+                    </h3>
                   </div>
                 </div>
               </div>
