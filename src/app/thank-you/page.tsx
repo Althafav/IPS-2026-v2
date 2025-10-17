@@ -12,7 +12,7 @@ export default async function page() {
   return <div className="">
     <div className="h-[76px] bg-black"/>
     <Section className="max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{__html: pageData.content.value}}/>
+        <div className="prose max-w-none" dangerouslySetInnerHTML={{__html: pageData.content.value}}/>
     </Section>
   </div>;
 }
