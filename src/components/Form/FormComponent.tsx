@@ -237,6 +237,7 @@ export default function FormComponent({
                     type="checkbox"
                     id="field[235][]"
                     name="field[235][]"
+                    value={option}
                     className="w-4 h-4 accent-teal-600 border-2 border-teal-500 rounded-md focus:ring-0"
                   />
                   <span>{option}</span>
