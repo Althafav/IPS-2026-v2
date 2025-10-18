@@ -12,8 +12,8 @@ export default function Section({
   id = "",
 }: SectionProps) {
   return (
-    <div className={`my-8 sm:my-12 ${className}`} id={id}>
+    <section className={`my-8 sm:my-12 ${className}`} id={id}>
       {children}
-    </div>
+    </section>
   );
 }

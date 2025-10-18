@@ -2,10 +2,10 @@ import Heading2 from "@/components/UI/Heading2";
 import Globals from "@/modules/Globals";
 import Link from "next/link";
 import React from "react";
-import AwardAccordionComponent from "./AwardAccordionComponent";
+import AwardAccordionComponent from "./components/AwardAccordionComponent";
 import Section from "@/components/UI/Section";
-import Timeline from "./Timeline";
-import AwardsFAQAccordion from "./AwardsFAQAccordion";
+import Timeline from "./components/Timeline";
+import AwardsFAQAccordion from "./components/AwardsFAQAccordion";
 
 
 
