@@ -30,7 +30,7 @@ export default function FooterComponent() {
     return null;
   }
 
-  const menuItems = pageData.menuitems.value as unknown as any[];
+  const menuItems = pageData.footermenuitems.value as unknown as any[];
   return (
     <div className="relative py-8 sm:py-12">
       <img
@@ -112,7 +112,7 @@ export default function FooterComponent() {
 
             <div className="col-span-2">
               <div className="flex sm:flex-row flex-col justify-between gap-5">
-                <nav className="grid grid-cols-2 gap-2 items-start justify-start">
+                <nav className="grid sm:grid-cols-2 gap-2 items-start justify-start">
                   {menuItems.map((item) => {
                     const name = item.name.value;
                     const link = item.link.value;
