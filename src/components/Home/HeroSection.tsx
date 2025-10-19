@@ -56,7 +56,7 @@ export default function HeroSection({
             {statsitems.map((item: any, index: number) => {
               return (
                 <div
-                  className="glass-container min-w-[150px] p-5 flex flex-col justify-center items-center gap-2"
+                  className=" min-w-[150px] p-5 flex flex-col justify-center items-center gap-2"
                   key={index}
                 >
                   <h4 className="text-2xl  max-w-md text-center text-white">

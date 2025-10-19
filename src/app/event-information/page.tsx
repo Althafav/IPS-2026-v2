@@ -238,7 +238,7 @@ export default async function page() {
               </Heading2>
             </div>
 
-            <div className="sm:col-span-2">
+            <div className="col-span-2">
               <img
                 className="w-full h-full object-cover"
                 src={pageData.parkingimage.value[0]?.url}
