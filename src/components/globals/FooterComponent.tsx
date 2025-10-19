@@ -12,6 +12,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import NewsLetterComponent from "./NewsLetterComponent";
 
 export default function FooterComponent() {
   const [pageData, setPageData] = useState<any | null>(null);
@@ -39,6 +40,7 @@ export default function FooterComponent() {
       />
       <footer className="footer-component-wrapper relative z-10">
         <div className="container mx-auto">
+          <NewsLetterComponent/>
           <div className="grid sm:grid-cols-3 gap-5">
             <div>
               <p className="text-white mb-5">
