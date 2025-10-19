@@ -1,12 +1,10 @@
 // src/app/article/[slug]/page.tsx
 
 import Globals from "@/modules/Globals";
-import Link from "next/link";
-import Image from "next/image";
 
 import Section from "@/components/UI/Section";
-import { Heading1 } from "lucide-react";
-import Heading2 from "@/components/UI/Heading2";
+
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({
   params,
@@ -31,7 +29,7 @@ export async function generateMetadata({
   const description =
     pageData.metadata__metadescription?.value || pageData.content?.value || "";
   const ogImage = pageData.image?.value?.[0]?.url;
-  const url = `${Globals.SITE_URL}blog/${slug}`;
+  const url = `${Globals.SITE_URL}news/${slug}`;
 
   return {
     metadataBase: new URL(Globals.SITE_URL),
@@ -63,7 +61,7 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  console.log(slug);
+
   const blogsRes = await Globals.KontentClient.item("news_page_2026")
     .withParameter("depth", "2")
     .toPromise();
@@ -72,9 +70,7 @@ export default async function Page({
     (item: any) => item.slug.value === slug
   );
 
-  if (!pageData) return <div>Blog not found</div>;
-
-  const slugStr = `articles/${slug}`;
+  if (!pageData) return notFound();
 
   return (
     <div className="blog-detail-page bg-white">
