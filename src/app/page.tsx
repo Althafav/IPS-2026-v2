@@ -57,6 +57,7 @@ export default async function Home() {
         subheading={pageData.bannersubheading.value}
         bannerimage={pageData.bannerimage.value[0]?.url}
         bannervideo={pageData.bannervideolink.value}
+        statsitems={pageData.statsitems.value}
         ctabuttons={pageData.bannercta.value}
       />
 
