@@ -7,6 +7,7 @@ import Image from "next/image";
 import Section from "@/components/UI/Section";
 import { Heading1 } from "lucide-react";
 import Heading2 from "@/components/UI/Heading2";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({
   params,
@@ -72,7 +73,7 @@ export default async function Page({
     (item: any) => item.slug.value === slug
   );
 
-  if (!pageData) return <div>Blog not found</div>;
+  if (!pageData) return notFound();
 
   const slugStr = `articles/${slug}`;
 
