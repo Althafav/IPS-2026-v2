@@ -203,7 +203,7 @@ export default async function page() {
           <Heading2 className="text-secondary mb-8">
             {pageData.directionheading.value}
           </Heading2>
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-3 gap-5">
             {pageData.directionitems.value.map((item: any) => {
               return (
                 <div className="" key={item.system.id}>
@@ -231,14 +231,14 @@ export default async function page() {
 
       <Section>
         <div className="container mx-auto">
-          <div className="grid grid-cols-3 gap-5 items-center">
+          <div className="grid sm:grid-cols-3 gap-5 items-center">
             <div>
               <Heading2 className="text-secondary">
                 {pageData.parkingheading.value}
               </Heading2>
             </div>
 
-            <div className="col-span-2">
+            <div className="sm:col-span-2">
               <img
                 className="w-full h-full object-cover"
                 src={pageData.parkingimage.value[0]?.url}

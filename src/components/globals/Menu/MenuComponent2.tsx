@@ -13,7 +13,6 @@ export default function MenuComponent2() {
   const [openSubMenu, setOpenSubMenu] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
- 
 
   useEffect(() => {
     const sub = Globals.KontentClient.item("global_component_2026")
@@ -49,15 +48,27 @@ export default function MenuComponent2() {
         <div className="flex items-center justify-between gap-4">
           {/* Menu button */}
           <button
-            className="flex items-center z-[60]"
+            className="flex items-center "
             onClick={() => setmenuOpen(!menuOpen)}
             aria-label="Toggle Menu"
             aria-expanded={menuOpen}
           >
             {menuOpen ? (
-              <X className={onLight || pathname === "/awards" ? "text-black" : "text-white"} />
+              <X
+                className={
+                  onLight || pathname === "/awards"
+                    ? "text-black"
+                    : "text-white"
+                }
+              />
             ) : (
-              <Menu className={onLight || pathname === "/awards" ? "text-black" : "text-white"} />
+              <Menu
+                className={
+                  onLight || pathname === "/awards"
+                    ? "text-black"
+                    : "text-white"
+                }
+              />
             )}
           </button>
 
@@ -115,8 +126,26 @@ export default function MenuComponent2() {
 
       {/* Full-screen Menu */}
       {menuOpen && (
-        <nav className="fixed inset-0 bg-white z-40 p-6 h-screen overflow-y-auto">
+        <nav className="fixed inset-0 bg-white z-40 p-6 h-screen overflow-y-auto max-w-[520px]">
           <div className="container mx-auto">
+            <div className="flex justify-end">
+              <button
+                className="flex items-center "
+                onClick={() => setmenuOpen(!menuOpen)}
+                aria-label="Toggle Menu"
+                aria-expanded={menuOpen}
+              >
+                {menuOpen && (
+                  <X
+                    className={
+                      onLight || pathname === "/awards"
+                        ? "text-black"
+                        : "text-white"
+                    }
+                  />
+                )}
+              </button>
+            </div>
             <ul className="flex flex-col gap-1 my-10">
               {pageData.menuitems.value.map((item: any, idx: number) => {
                 const hasSub = item.items?.value?.length > 0;

@@ -135,3 +135,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .read-more-btn:hover { transform: translateX(-50%) scale(1.04); }
+
+
+.exhibitor-card {
+  background: linear-gradient(180deg, #1FB3AC 69.23%, #0E95B3 100%);
+
+
+}
