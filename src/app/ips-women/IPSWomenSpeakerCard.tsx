@@ -1,9 +1,9 @@
 "use client";
-import SpeakerPopupBanner from "@/app/speakers/SpeakerPopupBanner";
 import Image from "next/image";
 import React, { useState } from "react";
+import IPSWomenSpeakerPopupCard from "./IPSWomenSpeakerPopupCard";
 
-export default function SpeakerCard({ speaker }: any) {
+export default function IPSWomenSpeakerCard({ speaker }: any) {
   const [selectedSpeaker, setSelectedSpeaker] = useState<any | null>(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -18,38 +18,29 @@ export default function SpeakerCard({ speaker }: any) {
   };
   return (
     <>
-      <div
-        className="shadow bg-white rounded-3xl overflow-hidden"
-        onClick={() => openPopup(speaker)}
-      >
+      <div className="shadow bg-white rounded-3xl overflow-hidden" onClick={() => openPopup(speaker)}>
         <div>
           <div className="speaker-item ">
             <div>
               <div>
                 <div className="image-wrapper">
-                  {speaker.Image &&
-                  typeof speaker.Image === "string" &&
-                  !speaker.Image.endsWith(".pdf") ? (
-                    <Image
-                      width={300}
-                      height={350}
-                      className="speaker-image aspect-square object-cover object-top"
-                      src={speaker.Image}
-                      alt={speaker.FirstName}
-                    />
-                  ) : (
-                    <img src="/assets/imgs/placeholder-person.png" alt="" />
-                  )}
+                  <Image
+                    width={300}
+                    height={350}
+                    className="speaker-image aspect-square object-cover object-top"
+                    src={speaker.image.value[0]?.url}
+                    alt={speaker.name.value}
+                  />
                 </div>
                 <div className="speaker-content p-4">
                   <h4 className="speaker-name text-secondary font-bold text-lg mb-2">
-                    {speaker.FirstName} {speaker.LastName}
+                    {speaker.name.value}
                   </h4>
                   <p className="font-light text-gray-600 text-sm">
-                    {speaker.Designation}
+                    {speaker.designation.value}
                   </p>
                   <p className="font-light text-gray-600 text-sm">
-                    {speaker.Company}
+                    {speaker.organization.value}
                   </p>
                 </div>
               </div>
@@ -57,8 +48,7 @@ export default function SpeakerCard({ speaker }: any) {
           </div>
         </div>
       </div>
-
-      <SpeakerPopupBanner
+      <IPSWomenSpeakerPopupCard
         speaker={selectedSpeaker}
         isOpen={isPopupOpen}
         onClose={closePopup}

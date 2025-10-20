@@ -6,6 +6,7 @@ import Section from "@/components/UI/Section";
 import Globals from "@/modules/Globals";
 import Image from "next/image";
 import React from "react";
+import IPSWomenSpeakerCard from "./IPSWomenSpeakerCard";
 
 export default async function page() {
   const response = await Globals.KontentClient.item("ips_women_2026")
@@ -112,41 +113,7 @@ export default async function page() {
           </Heading2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {pageData.speakers.value.map((speaker: any, index: number) => {
-              return (
-                <div
-                  className="shadow bg-white rounded-3xl overflow-hidden"
-                  key={index}
-                >
-                  <div>
-                    <div className="speaker-item ">
-                      <div>
-                        <div>
-                          <div className="image-wrapper">
-                            <Image
-                              width={300}
-                              height={350}
-                              className="speaker-image aspect-square object-cover object-top"
-                              src={speaker.image.value[0]?.url}
-                              alt={speaker.name.value}
-                            />
-                          </div>
-                          <div className="speaker-content p-4">
-                            <h4 className="speaker-name text-secondary font-bold text-lg mb-2">
-                              {speaker.name.value}
-                            </h4>
-                            <p className="font-light text-gray-600 text-sm">
-                              {speaker.designation.value}
-                            </p>
-                            <p className="font-light text-gray-600 text-sm">
-                              {speaker.organization.value}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
+              return <IPSWomenSpeakerCard key={index} speaker={speaker} />;
             })}
           </div>
         </div>
@@ -192,5 +159,4 @@ export default async function page() {
   );
 }
 
-
-export const revalidate = 0; 
+export const revalidate = 0;
