@@ -80,4 +80,4 @@ export default async function page() {
   );
 }
 
-export const revalidate = 300; 
+export const revalidate = 0;

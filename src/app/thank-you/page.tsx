@@ -16,3 +16,5 @@ export default async function page() {
     </Section>
   </div>;
 }
+
+export const revalidate = 0;

@@ -4,6 +4,7 @@ import Section from "@/components/UI/Section";
 import Globals from "@/modules/Globals";
 import React from "react";
 
+
 export async function generateMetadata() {
   const response = await Globals.KontentClient.item("agenda_page_2026")
     .withParameter("depth", "4")
@@ -61,3 +62,4 @@ export default async function page() {
     </div>
   );
 }
+export const revalidate = 0; 

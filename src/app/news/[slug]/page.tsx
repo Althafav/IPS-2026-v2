@@ -124,8 +124,8 @@ export default async function Page({
   );
 }
 
-// (Optional) SSG helpers
-export const revalidate = 3600;
+
+
 
 export async function generateStaticParams() {
   const blogsRes = await Globals.KontentClient.item("news_page_2026")
@@ -134,3 +134,5 @@ export async function generateStaticParams() {
   const blogsData = JSON.parse(JSON.stringify(blogsRes.item));
   return blogsData.blogitems.value.map((i: any) => ({ slug: i.slug.value }));
 }
+
+export const revalidate = 60;

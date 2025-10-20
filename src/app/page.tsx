@@ -8,7 +8,7 @@ import PillarSection from "@/components/Home/PillarSection";
 import YtVideoSection from "@/components/Home/YtVideoSection";
 import Globals from "@/modules/Globals";
 
-export const revalidate = 0; 
+
 export async function generateMetadata() {
   const response = await Globals.KontentClient.item("home_page_2026_demo")
     .withParameter("depth", "4")
@@ -97,3 +97,5 @@ export default async function Home() {
     </div>
   );
 }
+
+export const revalidate = 0; 

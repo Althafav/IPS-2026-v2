@@ -68,3 +68,5 @@ export default async function page(props: {
     </div>
   );
 }
+
+export const revalidate = 60;

@@ -4,6 +4,7 @@ import Section from "@/components/UI/Section";
 import Globals from "@/modules/Globals";
 import React from "react";
 
+
 async function getCountries() {
   const res = await fetch("https://api.strategic.ae/api/generic/countries", {
     // fresh each request; or use { next: { revalidate: 3600 } } to cache for 1h
@@ -67,3 +68,4 @@ export default async function page(props: {
     </div>
   );
 }
+export const revalidate = 0; 

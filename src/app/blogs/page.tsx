@@ -3,6 +3,7 @@ import Globals from "@/modules/Globals";
 import Link from "next/link";
 import React from "react";
 
+
 export default async function page() {
   const response = await Globals.KontentClient.item("blog_page_2026")
     .withParameter("depth", "4")
@@ -67,3 +68,6 @@ export default async function page() {
     </div>
   );
 }
+
+
+export const revalidate = 0; 
