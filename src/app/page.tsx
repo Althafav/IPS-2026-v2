@@ -45,7 +45,7 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-  const response = await Globals.KontentClient.item("home_page_2026_demo")
+  const response = await Globals.KontentClient.item("home_page_2026_2")
     .withParameter("depth", "4")
     .toPromise();
 
