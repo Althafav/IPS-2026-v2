@@ -12,6 +12,7 @@ export default class Globals {
         projectId: Globals.PROJECT_ID,
         globalQueryConfig: {
             useSecuredMode: true, // Queries the Delivery API using secure access.
+            waitForLoadingNewContent: true, 
         },
         secureApiKey: Globals.SECURE_API_KEY,
         typeResolvers: TypeResolver,
