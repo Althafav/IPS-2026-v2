@@ -18,7 +18,10 @@ export default function IPSWomenSpeakerCard({ speaker }: any) {
   };
   return (
     <>
-      <div className="shadow bg-white rounded-3xl overflow-hidden" onClick={() => openPopup(speaker)}>
+      <div
+        className="shadow bg-white rounded-3xl overflow-hidden"
+        onClick={() => openPopup(speaker)}
+      >
         <div>
           <div className="speaker-item ">
             <div>

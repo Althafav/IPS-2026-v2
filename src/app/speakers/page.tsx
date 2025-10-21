@@ -44,8 +44,12 @@ export default async function page() {
           </div>
         </div>
       </div>
-
       <Section>
+        <div className="container mx-auto">
+          <h1 className="text-2xl sm:text-4xl text-center">Coming soon</h1>
+        </div>
+      </Section>
+      {/* <Section>
         <div className="container mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {ApprovedSpeakers.map((speaker: any, index: number) => {
@@ -55,7 +59,7 @@ export default async function page() {
             })}
           </div>
         </div>
-      </Section>
+      </Section> */}
     </div>
   );
 }

@@ -106,7 +106,7 @@ export default async function page() {
         </div>
       </Section>
 
-      <Section>
+      {/* <Section>
         <div className="container mx-auto">
           <Heading2 className="text-center text-secondary mb-8">
             {pageData.speakersheading.value}
@@ -117,9 +117,9 @@ export default async function page() {
             })}
           </div>
         </div>
-      </Section>
+      </Section> */}
 
-      <Section>
+      {/* <Section>
         <div className="container mx-auto">
           <div className="grid sm:grid-cols-2">
             <div>
@@ -154,7 +154,7 @@ export default async function page() {
             })}
           </div>
         </div>
-      </Section>
+      </Section> */}
     </div>
   );
 }

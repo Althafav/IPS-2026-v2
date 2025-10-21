@@ -150,7 +150,7 @@ const AgendaComponent: React.FC<PageDataProps> = ({ eventId, colorCode }) => {
   return (
     <div className="" id="agenda">
       <div className="">
-        <div className="rounded bg-[#F5F5F5] p-5">
+        <div className="rounded-xl bg-[#F5F5F5] p-5 max-w-6xl ">
           {/* Day filter */}
           <div className="mb-6 overflow-x-auto py-5">
             <div className="flex gap-2">
@@ -241,13 +241,20 @@ const AgendaComponent: React.FC<PageDataProps> = ({ eventId, colorCode }) => {
                         <p className="mb-1 font-medium text-gray-900">
                           {to12h(s.StartTime)} – {to12h(s.EndTime)}
                         </p>
-                        <div className="text-xs uppercase tracking-wide text-gray-500">
+                        <div className="text-xs tracking-wide text-gray-500">
                           {s.SessionType}
                         </div>
                       </div>
 
                       <div className="sm:col-span-8">
-                        <h3 className="mb-2 text-xl font-semibold text-secondary">
+                        <h3
+                          className={`mb-2 text-xl font-semibold  ${
+                            s.SessionType ===
+                            "Institutional Investor Conference"
+                              ? "text-primary"
+                              : "text-secondary"
+                          }`}
+                        >
                           {s.SessionName}
                         </h3>
 
@@ -301,8 +308,6 @@ const AgendaComponent: React.FC<PageDataProps> = ({ eventId, colorCode }) => {
             )}
         </div>
       </div>
-
-    
     </div>
   );
 };

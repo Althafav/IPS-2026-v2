@@ -36,7 +36,7 @@ export default function HeroSection({
       {/* Content */}
       <div className="container relative z-10 px-6 pt-20">
         <h1 className="text-3xl sm:text-5xl font-bold mb-4">{heading}</h1>
-        <p className="text-lg mb-6">{subheading}</p>
+        <p className="text-xl mb-6">{subheading}</p>
 
         <div className="flex flex-wrap gap-4">
           {ctabuttons?.map((item: any, index: number) => (
@@ -50,7 +50,7 @@ export default function HeroSection({
           ))}
         </div>
       </div>
-      <div className="absolute bottom-0">
+      {/* <div className="absolute bottom-0">
         <Marquee className="" loop={0}>
           <div className="flex mx-3 gap-5">
             {statsitems.map((item: any, index: number) => {
@@ -70,7 +70,7 @@ export default function HeroSection({
             })}
           </div>
         </Marquee>
-      </div>
+      </div> */}
     </div>
   );
 }

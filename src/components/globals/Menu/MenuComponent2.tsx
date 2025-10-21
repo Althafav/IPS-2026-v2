@@ -76,7 +76,7 @@ export default function MenuComponent2() {
           <div className="flex items-center gap-5">
             <Link href="/" className="shrink-0">
               <Image
-                width={100}
+                width={120}
                 height={40}
                 className="object-contain"
                 src={
@@ -92,7 +92,7 @@ export default function MenuComponent2() {
             <div className="hidden md:block h-8 w-px bg-gray-200" />
 
             <Image
-              width={120}
+              width={140}
               height={48}
               className="object-contain hidden lg:block"
               src={
@@ -111,7 +111,7 @@ export default function MenuComponent2() {
                 key={index}
                 href={item.link?.value || "#"}
                 className={[
-                  "px-4 py-2 rounded-full text-sm font-medium transition-colors",
+                  "px-4 py-2 rounded-full  font-medium transition-colors text-lg",
                   onLight || pathname === "/awards"
                     ? "border-2 border-black text-black hover:bg-black hover:text-white"
                     : "border-2 border-white text-white hover:bg-white hover:text-black",
