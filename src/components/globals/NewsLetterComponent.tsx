@@ -34,7 +34,7 @@ export default function NewsLetterComponent() {
           <div className="">
             <input
               type="text"
-              className="form-control newsletter-field mt-1 block w-full rounded-full newsletter-field border border-white bg-transparent px-4 py-2 text-neutral-900 placeholder-neutral-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
+              className="form-control text-white newsletter-field mt-1 block w-full rounded-full newsletter-field border border-white bg-transparent px-4 py-2  placeholder-neutral-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
               id="email"
               name="email"
               placeholder="Enter your mail"

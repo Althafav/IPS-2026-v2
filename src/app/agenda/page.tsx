@@ -1,4 +1,4 @@
-import AgendaComponent from "@/components/AgendaComponent";
+import AgendaComponent from "@/app/agenda/AgendaComponent";
 import HeadBanner from "@/components/Blocks/HeadBanner";
 import Section from "@/components/UI/Section";
 import Globals from "@/modules/Globals";
