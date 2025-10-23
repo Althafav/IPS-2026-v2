@@ -6,8 +6,9 @@ import HeroSection from "@/components/Home/HeroSection";
 import PartnersCarousel from "@/components/Home/PartnersCarousel";
 import PillarSection from "@/components/Home/PillarSection";
 import YtVideoSection from "@/components/Home/YtVideoSection";
+import Section from "@/components/UI/Section";
 import Globals from "@/modules/Globals";
-
+import Marquee from "react-fast-marquee";
 
 export async function generateMetadata() {
   const response = await Globals.KontentClient.item("home_page_2026_demo")
@@ -68,6 +69,30 @@ export default async function Home() {
         items={pageData.pillarsitems.value}
       />
 
+      <Section>
+        <div className="">
+          <div className="">
+            <Marquee className="" loop={0}>
+              <div className="flex mx-3 gap-5">
+                {pageData.statsitems.value.map((item: any, index: number) => {
+                  return (
+                    <div
+                      className=" min-w-[150px] bg-primary rounded-xl p-5 flex flex-col justify-center gap-2"
+                      key={index}
+                    >
+                      <h4 className="text-2xl sm:text-4xl font-bold  max-w-md  text-white">
+                        {item.count.value}
+                      </h4>
+                      <p className=" text-white text-md">{item.name.value}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </Marquee>
+          </div>
+        </div>
+      </Section>
+
       <YtVideoSection
         heading={pageData.videoheading.value}
         description={pageData.videodescription.value}
@@ -98,4 +123,4 @@ export default async function Home() {
   );
 }
 
-export const revalidate = 0; 
+export const revalidate = 0;
