@@ -6,7 +6,41 @@ import Section from "@/components/UI/Section";
 import Globals from "@/modules/Globals";
 import Image from "next/image";
 import React from "react";
-import IPSWomenSpeakerCard from "./IPSWomenSpeakerCard";
+
+export async function generateMetadata() {
+  const response = await Globals.KontentClient.item("ips_women_2026")
+    .withParameter("depth", "4")
+    .toPromise();
+  const pageData = JSON.parse(JSON.stringify(response.item));
+
+  return {
+    title: pageData.metadata__pagetitle.value,
+    description: pageData.metadata__metadescription.value,
+    alternates: {
+      canonical: `${Globals.BASE_URL}ips-women`,
+    },
+    openGraph: {
+      title: pageData.metadata__pagetitle.value,
+      description: pageData.metadata__metadescription.value,
+      url: `${Globals.BASE_URL}ips-women`,
+      siteName: Globals.SITE_NAME,
+      images: [
+        {
+          url: `${Globals.BASE_URL}assets/logos/ips-logo-thumbnail.jpg`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageData.metadata__pagetitle.value,
+      description: pageData.metadata__metadescription.value,
+      images: [`${Globals.BASE_URL}assets/logos/ips-logo-thumbnail.jpg`],
+    },
+  };
+}
 
 export default async function page() {
   const response = await Globals.KontentClient.item("ips_women_2026")
