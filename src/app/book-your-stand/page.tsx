@@ -15,12 +15,12 @@ export async function generateMetadata() {
     title: pageData.metadata__pagetitle.value,
     description: pageData.metadata__metadescription.value,
     alternates: {
-      canonical: `${Globals.BASE_URL}/agenda`,
+      canonical: `${Globals.BASE_URL}book-your-stand`,
     },
     openGraph: {
       title: pageData.metadata__pagetitle.value,
       description: pageData.metadata__metadescription.value,
-      url: `${Globals.BASE_URL}/agenda`,
+      url: `${Globals.BASE_URL}book-your-stand`,
       siteName: Globals.SITE_NAME,
       images: [
         {

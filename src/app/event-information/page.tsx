@@ -6,9 +6,10 @@ import Globals from "@/modules/Globals";
 import Link from "next/link";
 import React from "react";
 
-
 export async function generateMetadata() {
-  const response = await Globals.KontentClient.item("event_information_page_2026")
+  const response = await Globals.KontentClient.item(
+    "event_information_page_2026"
+  )
     .withParameter("depth", "4")
     .toPromise();
   const pageData = JSON.parse(JSON.stringify(response.item));
@@ -17,12 +18,12 @@ export async function generateMetadata() {
     title: pageData.metadata__pagetitle.value,
     description: pageData.metadata__metadescription.value,
     alternates: {
-      canonical: Globals.BASE_URL,
+      canonical: `${Globals.BASE_URL}event-information`,
     },
     openGraph: {
       title: pageData.metadata__pagetitle.value,
       description: pageData.metadata__metadescription.value,
-      url: Globals.BASE_URL,
+      url: `${Globals.BASE_URL}event-information`,
       siteName: Globals.SITE_NAME,
       images: [
         {
@@ -371,4 +372,4 @@ export default async function page() {
   );
 }
 
-export const revalidate = 0; 
+export const revalidate = 0;
