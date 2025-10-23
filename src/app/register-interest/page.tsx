@@ -29,6 +29,7 @@ export default async function page(props: {
   const searchParams = await props.searchParams;
   const mainsource = searchParams?.mainsource ?? "";
   const subsource = searchParams?.subsource ?? "";
+  const attend = searchParams?.attend ?? "";
 
   const [response, countries, countryCodes] = await Promise.all([
     Globals.KontentClient.item("register_interest_form___2026")
@@ -57,6 +58,7 @@ export default async function page(props: {
               countryCodes={countryCodes}
               mainsource={mainsource}
               subsource={subsource}
+              attendAs={attend}
             />
 
             <div>

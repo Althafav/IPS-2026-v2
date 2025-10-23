@@ -10,9 +10,11 @@ export default function FormComponent({
   formsubmit,
   countries,
   countryCodes,
+  attendAs,
 }: any) {
   const options = [
     "Exhibitor",
+    "Speaker",
     "Sponsor",
     "Media Partner",
     "Attend Workshop",
@@ -222,7 +224,7 @@ export default function FormComponent({
             </div>
           </fieldset>
 
-          <fieldset className="col-span-2 px-2">
+          <fieldset className={`col-span-2 px-2 ${attendAs && "hidden"}`}>
             <legend className=" text-teal-600 text-sm font-medium mb-4">
               Interested In
             </legend>
@@ -238,6 +240,7 @@ export default function FormComponent({
                     id="field[235][]"
                     name="field[235][]"
                     value={option}
+                    defaultChecked={attendAs === option.toLocaleLowerCase()}
                     className="w-4 h-4 accent-teal-600 border-2 border-teal-500 rounded-md focus:ring-0"
                   />
                   <span>{option}</span>
