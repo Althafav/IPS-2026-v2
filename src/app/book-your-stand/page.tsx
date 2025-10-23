@@ -5,6 +5,41 @@ import Globals from "@/modules/Globals";
 
 import React from "react";
 
+export async function generateMetadata() {
+  const response = await Globals.KontentClient.item("book_your_stand_form___2026")
+    .withParameter("depth", "4")
+    .toPromise();
+  const pageData = JSON.parse(JSON.stringify(response.item));
+
+  return {
+    title: pageData.metadata__pagetitle.value,
+    description: pageData.metadata__metadescription.value,
+    alternates: {
+      canonical: `${Globals.BASE_URL}/agenda`,
+    },
+    openGraph: {
+      title: pageData.metadata__pagetitle.value,
+      description: pageData.metadata__metadescription.value,
+      url: `${Globals.BASE_URL}/agenda`,
+      siteName: Globals.SITE_NAME,
+      images: [
+        {
+          url: `${Globals.BASE_URL}assets/logos/ips-logo-thumbnail.jpg`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageData.metadata__pagetitle.value,
+      description: pageData.metadata__metadescription.value,
+      images: [`${Globals.BASE_URL}assets/logos/ips-logo-thumbnail.jpg`],
+    },
+  };
+}
+
 
 async function getCountries() {
   const res = await fetch("https://api.strategic.ae/api/generic/countries", {
@@ -33,7 +68,7 @@ export default async function page(props: {
   const attend = searchParams?.attend ?? "";
 
   const [response, countries, countryCodes] = await Promise.all([
-    Globals.KontentClient.item("book_your_stand_form___demo")
+    Globals.KontentClient.item("book_your_stand_form___2026")
       .withParameter("depth", "4")
       .toPromise(),
     getCountries(),
