@@ -1,12 +1,15 @@
 import HeadBanner from "@/components/Blocks/HeadBanner";
-import FormComponent from "@/components/Form/FormComponent";
+import BookStandFormComponent from "@/components/Form/BookStandFormComponent";
+import FormComponent from "@/components/Form/InterestFormComponent";
 import Section from "@/components/UI/Section";
 import Globals from "@/modules/Globals";
 
 import React from "react";
 
 export async function generateMetadata() {
-  const response = await Globals.KontentClient.item("book_your_stand_form___2026")
+  const response = await Globals.KontentClient.item(
+    "book_your_stand_form___2026"
+  )
     .withParameter("depth", "4")
     .toPromise();
   const pageData = JSON.parse(JSON.stringify(response.item));
@@ -39,7 +42,6 @@ export async function generateMetadata() {
     },
   };
 }
-
 
 async function getCountries() {
   const res = await fetch("https://api.strategic.ae/api/generic/countries", {
@@ -88,8 +90,7 @@ export default async function page(props: {
       <Section className="form-content relative">
         <div className="container mx-auto">
           <div className="flex gap-10 md:flex-row flex-col">
-            <FormComponent
-              formsubmit={pageData.formsubmit.value}
+            <BookStandFormComponent
               countries={countries}
               countryCodes={countryCodes}
               mainsource={mainsource}
@@ -107,4 +108,4 @@ export default async function page(props: {
   );
 }
 
-export const revalidate = 0; 
+export const revalidate = 0;

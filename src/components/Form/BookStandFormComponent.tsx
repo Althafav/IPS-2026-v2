@@ -4,10 +4,9 @@ import JsLoader from "@/modules/JsLoader";
 import { ChevronDown } from "lucide-react";
 import React, { useEffect } from "react";
 
-export default function FormComponent({
+export default function BookStandFormComponent({
   mainsource,
   subsource,
-  formsubmit,
   countries,
   countryCodes,
   attendAs,
@@ -44,11 +43,16 @@ export default function FormComponent({
       <input type="hidden" name="or" value="afa0e90b181b5113564543437bf2465a" />
       <input type="hidden" name="field[328]" value={mainsource} />
       <input type="hidden" name="field[329]" value={subsource} />
-      <input type="hidden" name="field[38]" value={formsubmit} />
       <input
         type="hidden"
         name="field[38]"
-        value="IPS 2026 - Book your Stand"
+        value={`IPS 2026 - Book Your Stand`}
+      />
+
+      <input
+        type="hidden"
+        name="leadType"
+        value={`${attendAs === "speaker" ? "IPS Conference Lead" : "IPS Lead"}`}
       />
 
       <div className="_form-content">
@@ -79,7 +83,7 @@ export default function FormComponent({
           </fieldset>
 
           {/* Email */}
-          <fieldset className="md:col-span-2 rounded-full border-2 border-teal-500 focus-within:border-teal-600 transition">
+          <fieldset className="lg:col-span-2 rounded-full border-2 border-teal-500 focus-within:border-teal-600 transition">
             <legend className="px-2 text-teal-600 text-sm">Email</legend>
             <input
               type="text"
@@ -91,7 +95,7 @@ export default function FormComponent({
           </fieldset>
 
           {/* Mobile Phone */}
-          <fieldset className="md:col-span-2 rounded-full border-2 border-teal-500 focus-within:border-teal-600 transition">
+          <fieldset className="lg:col-span-2 rounded-full border-2 border-teal-500 focus-within:border-teal-600 transition">
             <legend className="px-2 text-teal-600 text-sm">Mobile Phone</legend>
 
             <div className="flex items-center w-full">
@@ -198,7 +202,7 @@ export default function FormComponent({
             </div>
           </fieldset>
 
-          <fieldset className="relative col-span-2 rounded-full border-2 border-teal-500 focus-within:border-teal-600 transition">
+          <fieldset className="relative lg:col-span-2 rounded-full border-2 border-teal-500 focus-within:border-teal-600 transition">
             <legend className="px-2 text-teal-600 text-sm">
               Nature of Business
             </legend>
@@ -224,7 +228,7 @@ export default function FormComponent({
             </div>
           </fieldset>
 
-          <fieldset className={`col-span-2 px-2 ${attendAs && "hidden"}`}>
+          <fieldset className={`lg:col-span-2 px-2 ${attendAs && "hidden"}`}>
             <legend className=" text-teal-600 text-sm font-medium mb-4">
               Interested In
             </legend>
@@ -249,7 +253,7 @@ export default function FormComponent({
             </div>
           </fieldset>
 
-          <fieldset className="col-span-2 rounded-full border-2 border-teal-500 focus-within:border-teal-600 transition">
+          <fieldset className="lg:col-span-2 rounded-full border-2 border-teal-500 focus-within:border-teal-600 transition">
             <legend className="px-2 text-teal-600 text-sm">Message</legend>
             <textarea
               id="field[6]"

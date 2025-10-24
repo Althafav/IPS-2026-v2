@@ -39,7 +39,7 @@ export default function PillarSection({
         <div className="container mx-auto mb-6 px-4">
           {heading && <Heading2>{heading}</Heading2>}
           {subheading && (
-            <p className="text-gray-600 mt-2 max-w-2xl">{subheading}</p>
+            <p className="text-gray-600 mt-2 max-w-3xl">{subheading}</p>
           )}
         </div>
       )}

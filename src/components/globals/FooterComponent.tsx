@@ -40,7 +40,7 @@ export default function FooterComponent() {
       />
       <footer className="footer-component-wrapper relative z-10">
         <div className="container mx-auto">
-          <NewsLetterComponent/>
+          {/* <NewsLetterComponent/> */}
           <div className="grid sm:grid-cols-3 gap-5">
             <div>
               <p className="text-white mb-5">

@@ -1,5 +1,5 @@
 import HeadBanner from "@/components/Blocks/HeadBanner";
-import FormComponent from "@/components/Form/FormComponent";
+import FormComponent from "@/components/Form/InterestFormComponent";
 import Section from "@/components/UI/Section";
 import Globals from "@/modules/Globals";
 import React from "react";

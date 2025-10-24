@@ -30,3 +30,5 @@ export default class Globals {
             ? "https://ipscongress.com/"
             : "http://localhost:3000/";
 }
+
+export const SITE_URL = "https://ipscongress.com/"

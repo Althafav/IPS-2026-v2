@@ -24,7 +24,7 @@ window._show_thank_you = function (id, message, trackcmp_url, email) {
   form.querySelector("._form-content").style.display = "none";
   // thank_you.innerHTML = message;
   var firstname = $('input[name="firstname"]').val();
-  window.location.href = `/thank-you?user=${firstname}`;
+  window.location.href = `/thank-you`;
   thank_you.style.display = "none";
   const vgoAlias =
     typeof visitorGlobalObjectAlias === "undefined"
@@ -793,7 +793,7 @@ window._load_script = function (url, callback, isSubmit) {
       var formSubmitted = $('input[name="field[38]"]').val();
       var mainSource = $('input[name="field[328]"]').val();
       var subSource = $('input[name="field[329]"]').val();
-
+      var leadType = $('input[name="leadType"]').val();
       let columns = [
         {
           label: "name",
@@ -890,7 +890,7 @@ window._load_script = function (url, callback, isSubmit) {
 
       // Dynamic data object
       let requestData = {
-        lead_type: "IPS Lead",
+        lead_type: leadType,
         group_id: "topics",
         lead_status: "New Lead",
         board_id: "7268050149",

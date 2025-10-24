@@ -54,7 +54,7 @@ export default function ExhibitorsPage() {
     <>
       <TopSpacer color="black" />
       <Section className="container mx-auto">
-        <h1 className="text-3xl font-bold mb-8">Exhibitors</h1>
+        <h1 className="text-3xl font-bold mb-8">Exhibitors 2025</h1>
 
         {/* 🔸 Country Filter Dropdown */}
         <div className="mb-6">
