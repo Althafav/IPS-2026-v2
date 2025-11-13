@@ -20,21 +20,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}book-your-stand`,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.9,
     },
 
     {
       url: `${SITE_URL}agenda`,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.9,
     },
 
     {
       url: `${SITE_URL}speakers`,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.9,
     },
 
     {
@@ -51,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
 
-      {
+    {
       url: `${SITE_URL}contact-us`,
       lastModified: new Date(),
       changeFrequency: "weekly",

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import JsLoader from "@/modules/JsLoader";
 import React, { useEffect } from "react";
 

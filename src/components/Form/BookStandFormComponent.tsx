@@ -9,19 +9,7 @@ export default function BookStandFormComponent({
   subsource,
   countries,
   countryCodes,
-  attendAs,
 }: any) {
-  const options = [
-    "Exhibitor",
-    "Speaker",
-    "Sponsor",
-    "Media Partner",
-    "Attend Workshop",
-    "Attend Conference",
-    "Visitor",
-    "Event Partner",
-  ];
-
   useEffect(() => {
     JsLoader.loadFile(`/assets/js/registerInterest.js`);
   }, []);
@@ -49,11 +37,7 @@ export default function BookStandFormComponent({
         value={`IPS 2026 - Book Your Stand`}
       />
 
-      <input
-        type="hidden"
-        name="leadType"
-        value={`${attendAs === "speaker" ? "IPS Conference Lead" : "IPS Lead"}`}
-      />
+      <input type="hidden" name="leadType" value={`IPS Lead`} />
 
       <div className="_form-content">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 ">
@@ -79,6 +63,7 @@ export default function BookStandFormComponent({
               name="lastname"
               className="w-full rounded-full px-5 py-2 outline-none"
               placeholder=""
+              required
             />
           </fieldset>
 
@@ -91,6 +76,7 @@ export default function BookStandFormComponent({
               name="email"
               className="w-full rounded-full px-5 py-2 outline-none"
               placeholder=""
+              required
             />
           </fieldset>
 
@@ -117,6 +103,7 @@ export default function BookStandFormComponent({
                 name="field[12]"
                 className="flex-1 rounded-r-full px-5 py-2 outline-none "
                 placeholder="Enter your number"
+                required
               />
             </div>
           </fieldset>
@@ -130,6 +117,7 @@ export default function BookStandFormComponent({
               name="customer_account"
               className="w-full rounded-full px-5 py-2 outline-none"
               placeholder=""
+              required
             />
           </fieldset>
 
@@ -142,6 +130,7 @@ export default function BookStandFormComponent({
               name="field[23]"
               className="w-full rounded-full px-5 py-2 outline-none"
               placeholder=""
+              required
             />
           </fieldset>
 
@@ -157,6 +146,7 @@ export default function BookStandFormComponent({
             {/* Wrapper for select */}
             <div className="relative flex items-center">
               <select
+                required
                 className="w-full text-sm rounded-full px-5 py-3 pr-10 outline-none  text-gray-800 appearance-none cursor-pointer"
                 defaultValue=""
                 onChange={(e) => {
@@ -184,6 +174,7 @@ export default function BookStandFormComponent({
             {/* Wrapper for select */}
             <div className="relative flex items-center">
               <select
+                required
                 name="field[3]"
                 id="field[3]"
                 className="w-full text-sm rounded-full px-5 py-3 pr-10 outline-none  text-gray-800 appearance-none cursor-pointer"
@@ -210,6 +201,7 @@ export default function BookStandFormComponent({
             {/* Wrapper for select */}
             <div className="relative flex items-center">
               <select
+                required
                 name="field[4]"
                 id="field[4]"
                 className="w-full text-sm rounded-full px-5 py-3 pr-10 outline-none  text-gray-800 appearance-none cursor-pointer"
@@ -228,28 +220,24 @@ export default function BookStandFormComponent({
             </div>
           </fieldset>
 
-          <fieldset className={`lg:col-span-2 px-2 ${attendAs && "hidden"}`}>
+          <fieldset className={`lg:col-span-2 px-2 hidden`}>
             <legend className=" text-teal-600 text-sm font-medium mb-4">
               Interested In
             </legend>
 
             <div className="flex flex-wrap gap-3 text-gray-800">
-              {options.map((option) => (
-                <label
-                  key={option}
-                  className="flex items-center gap-2 cursor-pointer select-none"
-                >
-                  <input
-                    type="checkbox"
-                    id="field[235][]"
-                    name="field[235][]"
-                    value={option}
-                    defaultChecked={attendAs === option.toLocaleLowerCase()}
-                    className="w-4 h-4 accent-teal-600 border-2 border-teal-500 rounded-md focus:ring-0"
-                  />
-                  <span>{option}</span>
-                </label>
-              ))}
+              <label className="flex items-center gap-2 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  id="field[235][]"
+                  name="field[235][]"
+                  value="Exhibitor"
+                  defaultChecked={true}
+                  className="w-4 h-4 accent-teal-600 border-2 border-teal-500 rounded-md focus:ring-0"
+                  required
+                />
+                <span>Exhibitor</span>
+              </label>
             </div>
           </fieldset>
 
@@ -260,6 +248,7 @@ export default function BookStandFormComponent({
               name="field[6]"
               className="w-full rounded-full px-5 py-2 outline-none"
               placeholder=""
+              required
             />
           </fieldset>
 

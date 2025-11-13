@@ -95,7 +95,6 @@ export default async function page(props: {
               countryCodes={countryCodes}
               mainsource={mainsource}
               subsource={subsource}
-              attendAs="exhibitor"
             />
 
             <div>

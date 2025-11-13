@@ -11,7 +11,7 @@ import { MoveLeft, MoveRight } from "lucide-react";
 
 export default function ArticleCarousel({ codename, colorCode, href }: any) {
   const [pageData, setPageData] = useState<any | null>(null);
- 
+
   useEffect(() => {
     const sub = Globals.KontentClient.item(codename)
       .withParameter("depth", "4")
@@ -48,7 +48,7 @@ export default function ArticleCarousel({ codename, colorCode, href }: any) {
     <div className="bg-black py-8 sm:py-12">
       <div className="container mx-auto">
         <Heading2 className="text-center mb-10 text-white">
-         {pageData.bannerheading.value}
+          {pageData.bannerheading.value}
         </Heading2>
       </div>
       <div
@@ -60,15 +60,13 @@ export default function ArticleCarousel({ codename, colorCode, href }: any) {
         <div className="flex touch-pan-y -mx-2">
           {blogs.map((blog: any) => (
             <Link
-            href={`${href}/${blog.slug.value}`}
+              href={`${href}/${blog.slug.value}`}
               key={blog.system.id}
               className="
                 px-2
                 shrink-0
                  flex-[0_0_calc(100%)]
-         sm:flex-[0_0_calc(100%/2)]
-         
-               
+         sm:flex-[0_0_calc(100%/2)]   
               "
             >
               <div className="grid grid-cols-2 h-full">
@@ -80,7 +78,7 @@ export default function ArticleCarousel({ codename, colorCode, href }: any) {
                   className="w-full h-full  object-cover aspect-square "
                 />
                 <div
-                style={{backgroundColor: colorCode}}
+                  style={{ backgroundColor: colorCode }}
                   className={` h-full p-10 flex flex-col justify-between`}
                 >
                   <h2 className="sm:text-lg font-semibold mb-2 text-white">

@@ -13,10 +13,14 @@ import {
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import NewsLetterComponent from "./NewsLetterComponent";
+import { usePathname } from "next/navigation";
 
 export default function FooterComponent() {
   const [pageData, setPageData] = useState<any | null>(null);
+  const pathname = usePathname();
 
+  const hiddenRoutes = ["/register-interest", "/book-your-stand"];
+  const hideLayout = hiddenRoutes.some((route) => pathname?.startsWith(route));
   useEffect(() => {
     Globals.KontentClient.item("global_component_2026")
       .withParameter("depth", "4")
@@ -40,7 +44,8 @@ export default function FooterComponent() {
       />
       <footer className="footer-component-wrapper relative z-10">
         <div className="container mx-auto">
-          {/* <NewsLetterComponent/> */}
+          {!hideLayout && <NewsLetterComponent />}
+
           <div className="grid sm:grid-cols-3 gap-5">
             <div>
               <p className="text-white mb-5">

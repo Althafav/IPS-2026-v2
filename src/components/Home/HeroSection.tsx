@@ -35,6 +35,7 @@ export default function HeroSection({
 
       {/* Content */}
       <div className="container relative z-10 px-6 pt-20">
+        <p className="text-2xl mb-3 font-medium">22nd Edition</p>
         <h1 className="text-3xl sm:text-5xl font-bold mb-4">{heading}</h1>
         <p className="text-xl mb-6">{subheading}</p>
 

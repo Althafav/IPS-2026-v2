@@ -75,39 +75,43 @@ const SpeakerPopupBanner: React.FC<Props> = ({ speaker, onClose, isOpen }) => {
 
           {/* Socials */}
           <div className="flex justify-center gap-5 mt-6">
-            {has(speaker.Linkedin) && (
-              <Link
-                href={Helper.formatUrl(speaker.Linkedin)}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="text-gray-600 hover:text-gray-900"
-              >
-                <FaLinkedinIn />
-              </Link>
-            )}
-            {has(speaker.Facebook) && (
-              <Link
-                href={Helper.formatUrl(speaker.Facebook)}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="text-gray-600 hover:text-gray-900"
-              >
-                <FaFacebook />
-              </Link>
-            )}
-            {has(speaker.Instagram) && (
-              <Link
-                href={Helper.formatUrl(speaker.Instagram)}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="text-gray-600 hover:text-gray-900"
-              >
-                <FaInstagram />
-              </Link>
-            )}
+            {speaker.Linkedin &&
+              /^https?:\/\/(www\.)?linkedin\.com/i.test(speaker.Linkedin) && (
+                <Link
+                  href={speaker.Linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-gray-900"
+                >
+                  <FaLinkedinIn />
+                </Link>
+              )}
+
+            {speaker.Facebook &&
+              /^https?:\/\/(www\.)?facebook\.com/i.test(speaker.Facebook) && (
+                <Link
+                  href={speaker.Facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="text-gray-600 hover:text-gray-900"
+                >
+                  <FaFacebook />
+                </Link>
+              )}
+
+            {speaker.Instagram &&
+              /^https?:\/\/(www\.)?instagram\.com/i.test(speaker.Instagram) && (
+                <Link
+                  href={speaker.Instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="text-gray-600 hover:text-gray-900"
+                >
+                  <FaInstagram />
+                </Link>
+              )}
           </div>
         </div>
       </div>

@@ -58,9 +58,9 @@ export default function PartnersCarousel() {
               "
             >
               <div className="h-full bg-white rounded-2xl p-6 flex items-center justify-center relative">
-                {partner.category.value[0] && (
+                {partner.category?.value[0] && (
                   <span className="absolute left-0 top-0 px-2 py-1 bg-primary-orange text-white rounded-tr-md rounded-bl-md text-xs">
-                    {partner.category.value[0]?.name}
+                    {partner.category?.value[0]?.name}
                   </span>
                 )}
                 <Link

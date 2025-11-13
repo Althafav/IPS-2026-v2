@@ -45,9 +45,7 @@ export default function ExhibitorsPage() {
   }, [selectedCountry, exhibitors]);
 
   if (loading) {
-    return (
-      <Loader/>
-    );
+    return <Loader />;
   }
 
   return (

@@ -125,7 +125,7 @@ export default async function Page({
 }
 
 // (Optional) SSG helpers
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const blogsRes = await Globals.KontentClient.item("blog_page_2026")
