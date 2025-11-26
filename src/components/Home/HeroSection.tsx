@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Marquee from "react-fast-marquee";
+import SplitText from "../Animated/SplitText";
 
 export default function HeroSection({
   heading,
@@ -36,7 +37,12 @@ export default function HeroSection({
       {/* Content */}
       <div className="container relative z-10 px-6 pt-20">
         <p className="text-2xl mb-3 font-medium">22nd Edition</p>
-        <h1 className="text-3xl sm:text-5xl font-bold mb-4">{heading}</h1>
+        {/* <h1 className="text-3xl sm:text-5xl font-bold mb-4">{heading}</h1> */}
+        <SplitText
+          text={heading}
+          as="h1"
+          className="text-3xl sm:text-5xl font-bold mb-4"
+        />
         <p className="text-xl mb-6">{subheading}</p>
 
         <div className="flex flex-wrap gap-4">

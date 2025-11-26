@@ -1,8 +1,8 @@
 import Section from "@/components/UI/Section";
 import Globals from "@/modules/Globals";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
 
 export async function generateMetadata() {
   const response = await Globals.KontentClient.item("blog_page_2026")
@@ -39,7 +39,6 @@ export async function generateMetadata() {
   };
 }
 
-
 export default async function page() {
   const response = await Globals.KontentClient.item("blog_page_2026")
     .withParameter("depth", "4")
@@ -74,18 +73,18 @@ export default async function page() {
                   key={item.system.id}
                   className="rounded-3xl overflow-hidden bg-secondary flex flex-col shadow-lg hover:shadow-2xl transition-shadow duration-300"
                 >
-                  {/* Image Section */}
                   <div className="relative">
-                    <img
+                    <Image
+                      width={1080}
+                      height={400}
                       src={item.image.value[0]?.url}
                       alt={item.heading.value}
                       className="w-full h-[240px] object-cover"
                     />
-                    {/* Decorative Border */}
+
                     <div className="absolute inset-3 border border-white/50 rounded-3xl pointer-events-none"></div>
                   </div>
 
-                  {/* Text Section */}
                   <div className="bg-[#1DB6B1] p-6 flex flex-col justify-between flex-grow">
                     <h4 className="text-white text-base leading-snug font-medium mb-6">
                       {item.heading.value}
@@ -105,5 +104,4 @@ export default async function page() {
   );
 }
 
-
-export const revalidate = 0; 
+export const revalidate = 0;

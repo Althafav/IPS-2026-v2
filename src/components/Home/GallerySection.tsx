@@ -8,7 +8,7 @@ export default function GallerySection({ items }: any) {
       <div className="grid grid-cols-2 lg:grid-cols-4">
         {items.map((item: any, index: number) => {
           return (
-            <div key={index}>
+            <div key={index} className="">
               <Image width={1080} height={600} src={item?.url} alt="" />
             </div>
           );

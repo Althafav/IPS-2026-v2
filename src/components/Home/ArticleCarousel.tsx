@@ -69,7 +69,7 @@ export default function ArticleCarousel({ codename, colorCode, href }: any) {
          sm:flex-[0_0_calc(100%/2)]   
               "
             >
-              <div className="grid grid-cols-2 h-full">
+              <div className="grid grid-cols-2 h-full hover-lift group">
                 <Image
                   width={320}
                   height={180}
@@ -87,7 +87,7 @@ export default function ArticleCarousel({ codename, colorCode, href }: any) {
 
                   <div className="flex justify-end ">
                     <MoveRight
-                      className="rounded-full bg-white p-2"
+                      className="rounded-full bg-white p-2 group-hover:bg-primary group-hover:text-white group-hover:-rotate-45 duration-200 group-hover:shadow-3xl"
                       size={32}
                     />
                   </div>

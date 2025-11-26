@@ -52,7 +52,7 @@ function FeatureCard({ title, onClick }: { title: string, onClick: () => void; }
 
   return (
     <div
-      onClick={onClick}  aria-label={`${title} – open details`} className="relative group w-full aspect-[293/108] max-w-[360px] mx-auto">
+      onClick={onClick}  aria-label={`${title} – open details`} className="relative hover-lift group w-full aspect-[293/108] max-w-[360px] mx-auto cursor-pointer">
       {/* SVG fills the box */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +111,7 @@ function FeatureCard({ title, onClick }: { title: string, onClick: () => void; }
       </div>
 
       {/* Arrow badge anchors to the SAME box */}
-      <div className="absolute -top-3 -right-3 bg-[#25B3AD] rounded-full p-2 shadow-xl transition-transform duration-300 group-hover:scale-110">
+      <div className="absolute -top-3 -right-3 bg-[#25B3AD] group-hover:bg-primary rounded-full p-2 shadow-xl transition-transform duration-300 group-hover:scale-110">
         <ArrowUpRight size={18} className="text-white" />
       </div>
     </div>

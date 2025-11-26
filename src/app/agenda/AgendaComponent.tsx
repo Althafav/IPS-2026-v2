@@ -65,7 +65,7 @@ const AgendaComponent: React.FC<PageDataProps> = ({ eventId, colorCode }) => {
   const [loadingSessions, setLoadingSessions] = useState<boolean>(false);
   const [errorSessions, setErrorSessions] = useState<string | null>(null);
 
-  const [selectedType, setSelectedType] = useState<string>("All");
+  const [selectedTrack, setSelectedTrack] = useState<string>("All");
 
   const abortRef = useRef<AbortController | null>(null);
 
@@ -136,16 +136,16 @@ const AgendaComponent: React.FC<PageDataProps> = ({ eventId, colorCode }) => {
   );
 
   // Extract unique session types
-  const sessionTypes = useMemo(() => {
-    const types = Array.from(new Set(sessions.map((s) => s.SessionType)));
+  const sessionTracks = useMemo(() => {
+    const types = Array.from(new Set(sessions.map((s) => s.Track)));
     return ["All", ...types.filter(Boolean)];
   }, [sessions]);
 
   // Filter by type
   const filteredSessions = useMemo(() => {
-    if (selectedType === "All") return sessions;
-    return sessions.filter((s) => s.SessionType === selectedType);
-  }, [sessions, selectedType]);
+    if (selectedTrack === "All") return sessions;
+    return sessions.filter((s) => s.Track === selectedTrack);
+  }, [sessions, selectedTrack]);
 
   return (
     <div className="" id="agenda">
@@ -162,7 +162,7 @@ const AgendaComponent: React.FC<PageDataProps> = ({ eventId, colorCode }) => {
                     type="button"
                     onClick={() => {
                       setSelectedDayId(d.ItemID);
-                      setSelectedType("All"); // reset on day change
+                      setSelectedTrack("All"); // reset on day change
                     }}
                     className={`shrink-0 rounded border px-10 py-1.5 text-sm transition",
                       ${
@@ -179,16 +179,16 @@ const AgendaComponent: React.FC<PageDataProps> = ({ eventId, colorCode }) => {
           </div>
 
           {/* SessionType filter */}
-          {sessionTypes.length > 1 && (
+          {sessionTracks.length > 1 && (
             <div className="mb-6">
               <div className="flex flex-wrap gap-2">
-                {sessionTypes.map((type) => {
-                  const active = selectedType === type;
+                {sessionTracks.map((track) => {
+                  const active = selectedTrack === track;
                   return (
                     <button
-                      key={type}
+                      key={track}
                       type="button"
-                      onClick={() => setSelectedType(type)}
+                      onClick={() => setSelectedTrack(track)}
                       className={`shrink-0 rounded border px-4 py-1.5 text-sm transition",
                       ${
                         active
@@ -196,7 +196,7 @@ const AgendaComponent: React.FC<PageDataProps> = ({ eventId, colorCode }) => {
                           : "bg-white text-gray-700 hover:bg-gray-50"
                       }`}
                     >
-                      {type}
+                      {track}
                     </button>
                   );
                 })}

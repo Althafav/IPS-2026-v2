@@ -27,8 +27,11 @@ export default class Globals {
 
     static BASE_URL: string =
         process.env.NODE_ENV === "production"
-            ? "https://ipscongress.com/"
+            ? "https://www.ipscongress.com//"
             : "http://localhost:3000/";
 }
 
-export const SITE_URL = "https://ipscongress.com/"
+export const SITE_URL = "https://www.ipscongress.com/"
+export const SITE_NAME = "IPS Congress"
+export const EXHIBITORS_2025_URL =
+  "https://api.aimcongress.com/api/website/getexhibitors?eventid=cfc66726-6b7d-467f-8453-f0ee21b035f2";

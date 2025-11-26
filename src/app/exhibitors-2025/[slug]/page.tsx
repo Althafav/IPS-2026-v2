@@ -1,6 +1,8 @@
 import TopSpacer from "@/components/Blocks/TopSpacer";
 import Section from "@/components/UI/Section";
+import { SITE_URL } from "@/modules/Globals";
 import { slugify } from "@/modules/lib";
+import { buildMetadata } from "@/modules/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -9,6 +11,28 @@ import { FaLinkedin } from "react-icons/fa";
 
 const EXHIBITORS_URL =
   "https://api.aimcongress.com/api/website/getexhibitors?eventid=cfc66726-6b7d-467f-8453-f0ee21b035f2";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+
+  const res = await fetch(EXHIBITORS_URL, { next: { revalidate: 3600 } });
+  if (!res.ok) notFound();
+
+  const exhibitors: any = await res.json();
+  const exhibitor =
+    exhibitors.find((e: any) => slugify(e.company_name) === slug) || null;
+
+  return buildMetadata({
+    title: exhibitor.company_name,
+    description: exhibitor.company_breif,
+    image: exhibitor.company_logo,
+    canonical: `${SITE_URL}exhibitors-2025/${slug}`,
+  });
+}
 export default async function page({
   params,
 }: {

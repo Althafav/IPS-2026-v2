@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Heading2 from "../UI/Heading2";
 import Section from "../UI/Section";
+import AutoScroll from "embla-carousel-auto-scroll";
 
 export default function PartnersCarousel() {
   const [pageData, setPageData] = useState<any | null>(null);
@@ -19,13 +20,21 @@ export default function PartnersCarousel() {
     return () => sub.unsubscribe?.();
   }, []);
 
-  const [emblaRef] = useEmblaCarousel({ loop: true, align: "start" }, [
-    Autoplay({
-      delay: 3000,
-      stopOnMouseEnter: true,
-      stopOnInteraction: false,
-    }),
-  ]);
+  const [emblaRef] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "start",
+      dragFree: true,
+    },
+    [
+      AutoScroll({
+        playOnInit: true,
+        speed: 1,
+        stopOnInteraction: false,
+        stopOnMouseEnter: true,
+      }),
+    ]
+  );
 
   if (!pageData) return null;
 
@@ -57,7 +66,7 @@ export default function PartnersCarousel() {
                 2xl:flex-[0_0_calc(100%/7)]
               "
             >
-              <div className="h-full bg-white rounded-2xl p-6 flex items-center justify-center relative">
+              <div className="h-full hover-lift bg-white rounded-2xl p-6 flex items-center justify-center relative">
                 {partner.category?.value[0] && (
                   <span className="absolute left-0 top-0 px-2 py-1 bg-primary-orange text-white rounded-tr-md rounded-bl-md text-xs">
                     {partner.category?.value[0]?.name}
