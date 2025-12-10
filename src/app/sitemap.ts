@@ -101,7 +101,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
     },
     {
-      path: `${SITE_URL}ips-proptect-hub`,
+      path: `${SITE_URL}ips-proptech-hub`,
       priority: 1,
       changeFrequency: "weekly",
     },
@@ -129,7 +129,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
     },
     {
-      path: `${SITE_URL}gallery`,
+      path: `${SITE_URL}gallery/photos`,
       priority: 1,
       changeFrequency: "weekly",
     },

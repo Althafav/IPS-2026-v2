@@ -27,7 +27,7 @@ export default class Globals {
 
     static BASE_URL: string =
         process.env.NODE_ENV === "production"
-            ? "https://www.ipscongress.com//"
+            ? "https://www.ipscongress.com/"
             : "http://localhost:3000/";
 }
 

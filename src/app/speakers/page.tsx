@@ -1,10 +1,43 @@
-import HeadBanner from "@/components/Blocks/HeadBanner";
 import SpeakerCard from "@/components/SpeakerCard";
 import Section from "@/components/UI/Section";
 import Globals from "@/modules/Globals";
-import Image from "next/image";
 
 import React from "react";
+
+export async function generateMetadata() {
+  const response = await Globals.KontentClient.item("speakers_page_2025")
+    .withParameter("depth", "2")
+    .toPromise();
+  const pageData = JSON.parse(JSON.stringify(response.item));
+
+  return {
+    title: pageData.metadata__pagetitle.value,
+    description: pageData.metadata__metadescription.value,
+    alternates: {
+      canonical: `${Globals.BASE_URL}speakers`,
+    },
+    openGraph: {
+      title: pageData.metadata__pagetitle.value,
+      description: pageData.metadata__metadescription.value,
+      url: `${Globals.BASE_URL}speakers`,
+      siteName: Globals.SITE_NAME,
+      images: [
+        {
+          url: `${Globals.BASE_URL}assets/logos/ips-logo-thumbnail.jpg`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageData.metadata__pagetitle.value,
+      description: pageData.metadata__metadescription.value,
+      images: [`${Globals.BASE_URL}assets/logos/ips-logo-thumbnail.jpg`],
+    },
+  };
+}
 
 export default async function page() {
   const response = await Globals.KontentClient.item("speakers_page_2025")
@@ -17,7 +50,7 @@ export default async function page() {
 
   try {
     const response = await fetch(
-      `https://payment.aimcongress.com/api/SpeakersAPI/GetApprovedSpeakers?eventid=b023122a-8edf-47ba-b773-fa57e08e02d8`
+      `https://payment.aimcongress.com/api/SpeakersAPI/GetApprovedSpeakers?eventid=6fb9b8ce-22cf-48ea-95c4-4d776e0e11f4`
     );
     if (response.ok) {
       ApprovedSpeakers = await response.json();
@@ -44,22 +77,24 @@ export default async function page() {
           </div>
         </div>
       </div>
-      <Section>
-        <div className="container mx-auto">
-          <h1 className="text-2xl sm:text-4xl text-center">Coming soon</h1>
-        </div>
-      </Section>
-      {/* <Section>
-        <div className="container mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-            {ApprovedSpeakers.map((speaker: any, index: number) => {
-              return (
-                <SpeakerCard speaker={speaker} key={index}/>
-              );
-            })}
+
+      {ApprovedSpeakers.length > 0 ? (
+        <Section>
+          <div className="container mx-auto">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+              {ApprovedSpeakers.map((speaker: any, index: number) => {
+                return <SpeakerCard speaker={speaker} key={index} />;
+              })}
+            </div>
           </div>
-        </div>
-      </Section> */}
+        </Section>
+      ) : (
+        <Section>
+          <div className="container mx-auto">
+            <h1 className="text-2xl sm:text-4xl text-center">Coming soon</h1>
+          </div>
+        </Section>
+      )}
     </div>
   );
 }

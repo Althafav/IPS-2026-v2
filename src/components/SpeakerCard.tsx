@@ -1,5 +1,5 @@
 "use client";
-import SpeakerPopupBanner from "@/app/speakers/SpeakerPopupBanner";
+import SpeakerPopupBanner from "@/components/Popups/SpeakerPopupBanner";
 import Image from "next/image";
 import React, { useState } from "react";
 
