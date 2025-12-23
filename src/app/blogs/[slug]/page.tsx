@@ -5,6 +5,7 @@ import Globals from "@/modules/Globals";
 import Section from "@/components/UI/Section";
 
 import { notFound } from "next/navigation";
+import ReportDownloadWithPDFLink from "@/components/Form/ReportDownloadWithPDFLink";
 
 export async function generateMetadata({
   params,
@@ -75,28 +76,16 @@ export default async function Page({
   return (
     <div className="blog-detail-page bg-white">
       <div className="">
-        {/* <HeadBanner heading={pageData.heading.value}>
-          <p className="text-sm text-gray-500">
-            {pageData.system.lastModified
-              ? new Date(pageData.system.lastModified).toLocaleDateString(
-                  "en-GB",
-                  {
-                    day: "2-digit",
-                    month: "long",
-                    year: "numeric",
-                  }
-                )
-              : ""}
-          </p>
-        </HeadBanner> */}
-
         <div className="py-30 bg-[#1E1E1E]">
           <div className="container mx-auto">
-            <div className="grid sm:grid-cols-2 gap-5 items-center">
+            <div className="grid sm:grid-cols-2 gap-10 items-center">
               <div>
                 <h1 className="text-secondary text-3xl md:text-4xl">
                   {pageData.heading.value}
                 </h1>
+                {pageData.pdflink.value && (
+                  <ReportDownloadWithPDFLink pdfUrl={pageData.pdflink.value} />
+                )}
               </div>
               <div>
                 <img
@@ -124,7 +113,6 @@ export default async function Page({
   );
 }
 
-// (Optional) SSG helpers
 export const revalidate = 60;
 
 export async function generateStaticParams() {

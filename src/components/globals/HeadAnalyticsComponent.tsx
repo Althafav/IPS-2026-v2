@@ -27,7 +27,7 @@ export default function HeadAnalyticsComponent() {
         src={`/assets/js/snap-pixel.js`}
       ></Script>
 
-      <Script
+      {/* <Script
         id="snap-pixel-init"
         type="text/javascript"
         dangerouslySetInnerHTML={{
@@ -35,7 +35,7 @@ export default function HeadAnalyticsComponent() {
               snaptr('track', 'PAGE_VIEW', {'item_ids': ['INSERT_ITEM_ID_1', 'INSERT_ITEM_ID_2'], 'item_category': 'INSERT_ITEM_CATEGORY', 'uuid_c1': 'INSERT_UUID_C1', 'user_email': 'INSERT_USER_EMAIL', 'user_phone_number': 'INSERT_USER_PHONE_NUMBER', 'user_hashed_email': 'INSERT_USER_HASHED_EMAIL', 'user_hashed_phone_number': 'INSERT_USER_HASHED_PHONE_NUMBER', 'firstname': 'INSERT_FIRST_NAME', 'lastname': 'INSERT_LAST_NAME', 'age': 'INSERT_AGE', 'geo_country': 'INSERT_GEO_COUNTRY'})
             `,
         }}
-      />
+      /> */}
 
       <noscript>
         <img
