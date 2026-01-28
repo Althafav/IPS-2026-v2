@@ -6,8 +6,8 @@ import AwardAccordionComponent from "./components/AwardAccordionComponent";
 import Section from "@/components/UI/Section";
 import Timeline from "./components/Timeline";
 import AwardsFAQAccordion from "./components/AwardsFAQAccordion";
-
-
+import { FaFileDownload } from "react-icons/fa";
+import { IoMdDownload } from "react-icons/io";
 
 export async function generateMetadata() {
   const response = await Globals.KontentClient.item("ips_awards_2026")
@@ -43,7 +43,6 @@ export async function generateMetadata() {
     },
   };
 }
-
 
 export default async function page() {
   const response = await Globals.KontentClient.item("ips_awards_2026")
@@ -89,7 +88,18 @@ export default async function page() {
           <Heading2 className="text-white text-center">
             {pageData.categoryheading.value}
           </Heading2>
-
+          <div className="flex justify-center">
+            {pageData.awardsubmissionfile.value && (
+              <a
+                className="bg-primary whitespace-nowrap text-white px-4 py-2 rounded-full flex gap-1 items-center"
+                href={pageData.awardsubmissionfile.value}
+                target="_blank"
+              >
+                Categories Submission File Requirements
+                <IoMdDownload />
+              </a>
+            )}
+          </div>
           <AwardAccordionComponent pageData={pageData} />
 
           <div className="py-8 sm-py-12">
@@ -171,7 +181,7 @@ export default async function page() {
 
                   <div className="p-5">
                     <div
-                    className="prose"
+                      className="prose"
                       dangerouslySetInnerHTML={{ __html: item.content.value }}
                     />
                   </div>
@@ -185,4 +195,4 @@ export default async function page() {
   );
 }
 
-export const revalidate = 0; 
+export const revalidate = 0;

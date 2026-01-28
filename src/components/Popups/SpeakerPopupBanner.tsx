@@ -24,7 +24,7 @@ const SpeakerPopupBanner: React.FC<Props> = ({ speaker, onClose, isOpen }) => {
       aria-labelledby="speaker-popup-title"
     >
       <div
-        className="bg-white w-full max-w-lg rounded-lg relative shadow-xl animate-fade-in
+        className="bg-white w-full max-w-2xl rounded-lg relative shadow-xl animate-fade-in
                    min-h-[420px] max-h-[85vh] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()} // prevent close when clicking inside
       >
@@ -68,9 +68,7 @@ const SpeakerPopupBanner: React.FC<Props> = ({ speaker, onClose, isOpen }) => {
         {/* Scrollable body */}
         <div className="px-6 pb-6 flex-1 overflow-y-auto">
           {speaker.Profile && (
-            <div className="text-sm text-gray-800 whitespace-pre-line break-words">
-              {speaker.Profile}
-            </div>
+            <div className="prose text-justify text-md leading-snug" dangerouslySetInnerHTML={{__html: speaker.Profile}}/>
           )}
 
           {/* Socials */}

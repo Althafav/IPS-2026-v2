@@ -45,12 +45,12 @@ export default function SpeakerCard({ speaker }: any) {
                   <h4 className="speaker-name text-secondary font-bold text-lg mb-2">
                     {speaker.FirstName} {speaker.LastName}
                   </h4>
-                  <p className="font-light text-gray-600 text-sm">
+                  <p className="font-light text-gray-600 text-sm uppercase">
                     {speaker.Designation}
                   </p>
-                  <p className="font-light text-gray-600 text-sm">
+                  <p className="font-light text-gray-600 text-sm uppercase">
                     {speaker.Company}
-                  </p>
+                  </p>{" "}
                 </div>
               </div>
             </div>
