@@ -58,6 +58,12 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
 
+        {
+        protocol: 'https',
+        hostname: 'speakers.aimcongress.com',
+        pathname: '/**',
+      },
+
       
     ],
   },
