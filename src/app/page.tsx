@@ -3,9 +3,11 @@ import ArticleCarousel from "@/components/Home/ArticleCarousel";
 import FeatureSection from "@/components/Home/FeatureSection";
 import GallerySection from "@/components/Home/GallerySection";
 import HeroSection from "@/components/Home/HeroSection";
+import HomeSpeakersCarousel from "@/components/Home/HomeSpeakerCarousel";
 import PartnersCarousel from "@/components/Home/PartnersCarousel";
 import PillarSection from "@/components/Home/PillarSection";
 import YtVideoSection from "@/components/Home/YtVideoSection";
+import Heading2 from "@/components/UI/Heading2";
 import Section from "@/components/UI/Section";
 import Globals from "@/modules/Globals";
 import Marquee from "react-fast-marquee";
@@ -105,6 +107,23 @@ export default async function Home() {
         backgroundImage={pageData.featuresbackgroundimage.value[0]?.url}
         items={pageData.featureitems.value}
       />
+
+      <Section>
+        <div className="container mx-auto">
+          <Heading2 className="text-center mb-8">
+            Featured Speakers - IPS 2026
+          </Heading2>
+          <HomeSpeakersCarousel />
+          <div className="mt-5 flex justify-center">
+            <a
+              className="px-8 py-2 rounded-full bg-secondary text-white"
+              href="/speakers"
+            >
+              View all Speakers
+            </a>
+          </div>
+        </div>
+      </Section>
 
       <GallerySection items={pageData.galleryitems.value} />
 

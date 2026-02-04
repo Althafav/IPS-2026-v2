@@ -19,8 +19,8 @@ export default function SpeakerCard({ speaker }: any) {
   return (
     <>
       <div
-        className="shadow bg-white rounded-3xl overflow-hidden"
-        onClick={() => openPopup(speaker)}
+        className="shadow bg-white rounded-3xl overflow-hidden h-full"
+      
       >
         <div>
           <div className="speaker-item ">
@@ -45,10 +45,10 @@ export default function SpeakerCard({ speaker }: any) {
                   <h4 className="speaker-name text-secondary font-bold text-lg mb-2">
                     {speaker.FirstName} {speaker.LastName}
                   </h4>
-                  <p className="font-light text-gray-600 text-sm uppercase">
+                  <p className="font-light text-gray-600 text-sm uppercase mb-2">
                     {speaker.Designation}
                   </p>
-                  <p className="font-light text-gray-600 text-sm uppercase">
+                  <p className="font-bold text-gray-600 text-sm uppercase">
                     {speaker.Company}
                   </p>{" "}
                 </div>
