@@ -37,6 +37,13 @@ export default function HeadAnalyticsComponent() {
         }}
       /> */}
 
+      <Script
+        type="text/javascript"
+        src="https://d3mkw6s8thqya7.cloudfront.net/integration-plugin.js"
+        id="aisensy-wa-widget"
+        widget-id="Yv5gVl"
+      ></Script>
+
       <noscript>
         <img
           alt="facebook script"
