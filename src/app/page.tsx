@@ -14,6 +14,7 @@ import Marquee from "react-fast-marquee";
 
 export async function generateMetadata() {
   const response = await Globals.KontentClient.item("home_page_2026_demo")
+  
     .withParameter("depth", "4")
     .toPromise();
   const pageData = JSON.parse(JSON.stringify(response.item));

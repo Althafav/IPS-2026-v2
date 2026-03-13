@@ -111,6 +111,7 @@ export default async function page() {
                   {item.ctalink.value && (
                     <div className="mt-4 flex justify-center ">
                       <a
+                        target="_blank"
                         href={item.ctalink.value}
                         className="px-8 py-2 rounded-full bg-primary text-white text-sm"
                       >

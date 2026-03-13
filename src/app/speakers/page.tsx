@@ -56,17 +56,23 @@ export default async function Page() {
     );
 
     if (response.ok) {
-      ApprovedSpeakers = await response.json();
+      const data = await response.json();
 
-      ApprovedSpeakers.sort((a: any, b: any) => {
-        const getPriority = (speaker: any) => {
-          if (speaker.HighLevelDignitary) return 1;
-          if (speaker.HighLevel) return 2;
-          return 3;
-        };
+      ApprovedSpeakers = data
+        // ✅ Keep only HighLevelDignitary OR HighLevel
+        .filter(
+          (speaker: any) => speaker.HighLevelDignitary || speaker.HighLevel,
+        )
+        // ✅ Sort: HighLevelDignitary first, then HighLevel
+        .sort((a: any, b: any) => {
+          const getPriority = (speaker: any) => {
+            if (speaker.HighLevelDignitary) return 1;
+            if (speaker.HighLevel) return 2;
+            return 3;
+          };
 
-        return getPriority(a) - getPriority(b);
-      });
+          return getPriority(a) - getPriority(b);
+        });
     } else {
       console.error("Failed to fetch speakers");
     }

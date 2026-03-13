@@ -8,7 +8,7 @@ import React from "react";
 
 export async function generateMetadata() {
   const response = await Globals.KontentClient.item(
-    "book_your_stand_form___2026"
+    "book_your_stand_form___2026",
   )
     .withParameter("depth", "4")
     .toPromise();
@@ -61,21 +61,37 @@ async function getCountryCodes() {
   return res.json() as Promise<Array<{ code: string; name: string }>>;
 }
 
+async function getRegistrantById(id: string) {
+  const url = `https://api.strategic.ae/api/Website/GetRegistrantById?id=${encodeURIComponent(
+    id,
+  )}`;
+
+  const res = await fetch(url, { cache: "no-store" });
+  if (!res.ok) return null; // don't crash page; just skip prefill
+  return (await res.json()) as any;
+}
+
 export default async function page(props: {
   searchParams: Promise<Record<string, string>>;
 }) {
   const searchParams = await props.searchParams;
   const mainsource = searchParams?.mainsource ?? "";
   const subsource = searchParams?.subsource ?? "";
-  const attend = searchParams?.attend ?? "";
 
-  const [response, countries, countryCodes] = await Promise.all([
-    Globals.KontentClient.item("book_your_stand_form___2026")
-      .withParameter("depth", "4")
-      .toPromise(),
-    getCountries(),
-    getCountryCodes(),
-  ]);
+  const registeredUserId = searchParams?.rid ?? "";
+  
+
+  const [response, countries, countryCodes, registredUserData] =
+    await Promise.all([
+      Globals.KontentClient.item("book_your_stand_form___2026")
+        .withParameter("depth", "4")
+        .toPromise(),
+      getCountries(),
+      getCountryCodes(),
+      registeredUserId
+        ? getRegistrantById(registeredUserId)
+        : Promise.resolve(null),
+    ]);
 
   const pageData = JSON.parse(JSON.stringify(response.item));
 
@@ -95,6 +111,7 @@ export default async function page(props: {
               countryCodes={countryCodes}
               mainsource={mainsource}
               subsource={subsource}
+              registeredUserData={registredUserData}
             />
 
             <div>

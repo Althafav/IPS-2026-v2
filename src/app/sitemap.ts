@@ -79,6 +79,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
 
     {
+      path: `${SITE_URL}exhibitors-2025`,
+      priority: 1,
+      changeFrequency: "weekly",
+    },
+
+    {
       path: `${SITE_URL}register-interest`,
       priority: 1,
       changeFrequency: "weekly",
@@ -100,6 +106,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
       changeFrequency: "weekly",
     },
+
+    {
+      path: `${SITE_URL}flights`,
+      priority: 1,
+      changeFrequency: "weekly",
+    },
+
+    {
+      path: `${SITE_URL}hotels`,
+      priority: 1,
+      changeFrequency: "weekly",
+    },
     {
       path: `${SITE_URL}ips-proptech-hub`,
       priority: 1,
@@ -118,8 +136,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
 
     {
+      path: `${SITE_URL}why-visit`,
+      priority: 0.8,
+      changeFrequency: "weekly",
+    },
+
+    {
       path: `${SITE_URL}stand-builder`,
-      priority: 1,
+      priority: 0.7,
       changeFrequency: "weekly",
     },
 
@@ -130,7 +154,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       path: `${SITE_URL}gallery/photos`,
-      priority: 1,
+      priority: 0.7,
+      changeFrequency: "weekly",
+    },
+
+    {
+      path: `${SITE_URL}partners`,
+      priority: 0.7,
       changeFrequency: "weekly",
     },
   ].map((p) => ({

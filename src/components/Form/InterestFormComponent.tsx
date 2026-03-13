@@ -159,9 +159,6 @@ export default function FormComponent({
               <select
                 className="w-full text-sm rounded-full px-5 py-3 pr-10 outline-none  text-gray-800 appearance-none cursor-pointer"
                 defaultValue=""
-                onChange={(e) => {
-                  $(".nationality").val(e.target.value);
-                }}
               >
                 <option value="">Select Nationality</option>
                 {countries.map((country: any, index: number) => (

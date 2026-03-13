@@ -19,7 +19,7 @@ export async function generateMetadata({
     .toPromise();
   const blogsData = JSON.parse(JSON.stringify(blogsRes.item));
   const pageData = blogsData.blogitems.value.find(
-    (i: any) => i.slug.value === slug
+    (i: any) => i.slug.value === slug,
   );
 
   if (!pageData) {
@@ -68,7 +68,7 @@ export default async function Page({
     .toPromise();
   const blogsData = JSON.parse(JSON.stringify(blogsRes.item));
   const pageData = blogsData.blogitems.value.find(
-    (item: any) => item.slug.value === slug
+    (item: any) => item.slug.value === slug,
   );
 
   if (!pageData) return notFound();
@@ -80,9 +80,21 @@ export default async function Page({
           <div className="container mx-auto">
             <div className="grid sm:grid-cols-2 gap-10 items-center">
               <div>
-                <h1 className="text-secondary text-3xl md:text-4xl">
+                <h1 className="text-secondary text-3xl md:text-4xl mb-3">
                   {pageData.heading.value}
                 </h1>
+                <p className="text-sm text-white mb-6">
+                  {pageData.system.lastModified
+                    ? new Date(pageData.system.lastModified).toLocaleDateString(
+                        "en-GB",
+                        {
+                          day: "2-digit",
+                          month: "long",
+                          year: "numeric",
+                        },
+                      )
+                    : ""}
+                </p>
                 {pageData.pdflink.value && (
                   <ReportDownloadWithPDFLink pdfUrl={pageData.pdflink.value} />
                 )}

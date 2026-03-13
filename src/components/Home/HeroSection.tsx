@@ -41,9 +41,9 @@ export default function HeroSection({
         <SplitText
           text={heading}
           as="h1"
-          className="text-3xl sm:text-5xl font-bold mb-4"
+          className="text-3xl sm:text-5xl font-bold mb-8 max-w-3xl"
         />
-        <p className="text-xl mb-6">{subheading}</p>
+        <p className="text-xl mb-8">{subheading}</p>
 
         <div className="flex flex-wrap gap-4">
           {ctabuttons?.map((item: any, index: number) => (

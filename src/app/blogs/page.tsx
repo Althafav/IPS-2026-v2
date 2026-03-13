@@ -66,37 +66,55 @@ export default async function page() {
       <Section>
         <div className="container mx-auto">
           <div className="grid grid-cols-4 gap-5">
-            {pageData.blogitems.value.map((item: any) => {
-              return (
-                <Link
-                  href={`/blogs/${item.slug.value}`}
-                  key={item.system.id}
-                  className="rounded-3xl overflow-hidden bg-secondary flex flex-col shadow-lg hover:shadow-2xl transition-shadow duration-300"
-                >
-                  <div className="relative">
-                    <Image
-                      width={1080}
-                      height={400}
-                      src={item.image.value[0]?.url}
-                      alt={item.heading.value}
-                      className="w-full h-[240px] object-cover"
-                    />
+            {pageData.blogitems.value
+              .sort(
+                (a: any, b: any) =>
+                  new Date(b.system.lastModified).getTime() -
+                  new Date(a.system.lastModified).getTime(),
+              )
+              .map((item: any) => {
+                return (
+                  <Link
+                    href={`/blogs/${item.slug.value}`}
+                    key={item.system.id}
+                    className="rounded-3xl overflow-hidden bg-secondary flex flex-col shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                  >
+                    <div className="relative">
+                      <Image
+                        width={1080}
+                        height={400}
+                        src={item.image.value[0]?.url}
+                        alt={item.heading.value}
+                        className="w-full h-[240px] object-cover"
+                      />
 
-                    <div className="absolute inset-3 border border-white/50 rounded-3xl pointer-events-none"></div>
-                  </div>
+                      <div className="absolute inset-3 border border-white/50 rounded-3xl pointer-events-none"></div>
+                    </div>
 
-                  <div className="bg-[#1DB6B1] p-6 flex flex-col justify-between flex-grow">
-                    <h4 className="text-white text-base leading-snug font-medium mb-6">
-                      {item.heading.value}
-                    </h4>
+                    <div className="bg-[#1DB6B1] p-6 flex flex-col justify-between flex-grow">
+                      <h4 className="text-white text-base leading-snug font-medium mb-3">
+                        {item.heading.value}
+                      </h4>
 
-                    <button className="self-center bg-white text-black text-sm px-6 py-2 rounded-full hover:bg-gray-100 transition-all">
-                      Read More
-                    </button>
-                  </div>
-                </Link>
-              );
-            })}
+                      <p className="text-sm text-white mb-6">
+                        {item.system.lastModified
+                          ? new Date(
+                              item.system.lastModified,
+                            ).toLocaleDateString("en-GB", {
+                              day: "2-digit",
+                              month: "long",
+                              year: "numeric",
+                            })
+                          : ""}
+                      </p>
+
+                      <button className="self-center bg-white text-black text-sm px-6 py-2 rounded-full hover:bg-gray-100 transition-all">
+                        Read More
+                      </button>
+                    </div>
+                  </Link>
+                );
+              })}
           </div>
         </div>
       </Section>

@@ -4,7 +4,7 @@ import Loader from "@/components/UI/Loader";
 import { slugify } from "@/modules/lib";
 import React, { useEffect, useMemo, useState } from "react";
 
-export default function Exhibitors2025Client() {
+export default function Exhibitors2026Client() {
   const [exhibitors, setExhibitors] = useState<any[]>([]);
   const [selectedCountry, setSelectedCountry] = useState("All");
   const [loading, setLoading] = useState(true);
@@ -13,7 +13,7 @@ export default function Exhibitors2025Client() {
     const fetchExhibitors = async () => {
       try {
         const response = await fetch(
-          `https://api.aimcongress.com/api/website/getexhibitors?eventid=cfc66726-6b7d-467f-8453-f0ee21b035f2`,
+          `https://api.aimcongress.com/api/website/getexhibitors?eventid=d7359efe-5e64-4311-93e9-f236bbf75960`,
         );
         if (response.ok) {
           const data = await response.json();

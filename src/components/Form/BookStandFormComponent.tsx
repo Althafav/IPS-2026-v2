@@ -2,17 +2,55 @@
 import { NatureOfBusiness } from "@/constants/NatureOfBusiness";
 import JsLoader from "@/modules/JsLoader";
 import { ChevronDown } from "lucide-react";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 export default function BookStandFormComponent({
   mainsource,
   subsource,
   countries,
   countryCodes,
+  registeredUserData,
 }: any) {
   useEffect(() => {
     JsLoader.loadFile(`/assets/js/registerInterest.js`);
   }, []);
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (!registeredUserData || !formRef.current) return;
+
+    const form = formRef.current;
+
+    (form.elements.namedItem("firstname") as HTMLInputElement).value =
+      registeredUserData.FirstName || "";
+
+    (form.elements.namedItem("lastname") as HTMLInputElement).value =
+      registeredUserData.LastName || "";
+
+    (form.elements.namedItem("email") as HTMLInputElement).value =
+      registeredUserData.Email || "";
+
+    (form.elements.namedItem("customer_account") as HTMLInputElement).value =
+      registeredUserData.Organization || "";
+
+    (form.elements.namedItem("field[23]") as HTMLInputElement).value =
+      registeredUserData.JobTitle || "";
+
+    // phone split
+    const [code, num] = (registeredUserData.MobileNumber || "").split("-");
+    if (code)
+      (form.elements.namedItem("phoneCode") as HTMLSelectElement).value = code;
+    if (num)
+      (form.elements.namedItem("field[12]") as HTMLInputElement).value = num;
+
+    (form.elements.namedItem("field[3]") as HTMLSelectElement).value =
+      registeredUserData.Country || "";
+
+    (form.elements.namedItem("field[99]") as HTMLInputElement).value =
+      registeredUserData.Nationality || "";
+  }, [registeredUserData]);
+
   return (
     <form
       className="md:w-3/4 bg-white _form _form_400 _inline-form "
@@ -20,6 +58,7 @@ export default function BookStandFormComponent({
       action="//ac.strategic.ae/proc.php"
       id="_form_400_"
       noValidate
+      ref={formRef}
     >
       <input type="hidden" name="u" value="400" />
       <input type="hidden" name="f" value="400" />
@@ -51,6 +90,7 @@ export default function BookStandFormComponent({
               className="w-full rounded-full px-5 py-2 outline-none"
               placeholder=""
               required
+              defaultValue={registeredUserData?.FirstName || ""}
             />
           </fieldset>
 
@@ -147,11 +187,9 @@ export default function BookStandFormComponent({
             <div className="relative flex items-center">
               <select
                 required
+                name="field[99]"
                 className="w-full text-sm rounded-full px-5 py-3 pr-10 outline-none  text-gray-800 appearance-none cursor-pointer"
                 defaultValue=""
-                onChange={(e) => {
-                  $(".nationality").val(e.target.value);
-                }}
               >
                 <option value="">Select Nationality</option>
                 {countries.map((country: any, index: number) => (

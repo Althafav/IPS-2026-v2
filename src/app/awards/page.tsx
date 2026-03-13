@@ -91,11 +91,11 @@ export default async function page() {
           <div className="flex justify-center">
             {pageData.awardsubmissionfile.value && (
               <a
-                className="bg-primary whitespace-nowrap text-white px-4 py-2 rounded-full flex gap-1 items-center"
+                className="bg-primary whitespace-nowrap text-white text-sm px-4 py-2 rounded-full flex gap-1 items-center"
                 href={pageData.awardsubmissionfile.value}
                 target="_blank"
               >
-                Categories Submission File Requirements
+                Download Submission File Requirements
                 <IoMdDownload />
               </a>
             )}

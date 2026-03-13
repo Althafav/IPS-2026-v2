@@ -1,10 +1,16 @@
-
 import { slugify } from "@/modules/lib";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function ExhibitorCard({ exhibitor }: any) {
+export default function ExhibitorCard({
+  exhibitor,
+  companyName,
+  companyLogo,
+  standNo,
+  country,
+  viewLink,
+}: any) {
   return (
     <div className="rounded-2xl p-2 shadow-md exhibitor-card hover:shadow-lg transition relative min-h-[400px] sm:min-h-[480px]">
       <div>
@@ -12,31 +18,31 @@ export default function ExhibitorCard({ exhibitor }: any) {
           <Image
             width={160}
             height={160}
-            src={exhibitor.company_logo}
-            alt={exhibitor.company_name}
+            src={companyLogo}
+            alt={companyName}
             className="h-24 mx-auto object-contain mb-4 aspect-square"
           />
         </div>
 
         <div className="p-5">
           <h4 className="text-white text-md font-bold uppercase leading-tight max-w-[200px] mb-3">
-            {exhibitor.company_name}
+            {companyName}
           </h4>
-          {exhibitor.stand_no && (
+          {standNo && (
             <p className="text-md text-white mb-1">
-              Stand No: {exhibitor.stand_no}
+              Stand No: {standNo}
             </p>
           )}
-          {exhibitor.country && (
+          {country && (
             <p className="text-md text-white line-clamp-3">
-              {exhibitor.country}
+              {country}
             </p>
           )}
         </div>
 
         <div className="p-5 absolute bottom-2 right-2">
           <Link
-            href={`/exhibitors-2025/${slugify(exhibitor.company_name)}`}
+            href={viewLink}
             className="flex items-center gap-3 text-white"
           >
             VIEW DETAILS{" "}

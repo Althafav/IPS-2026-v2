@@ -67,6 +67,7 @@ export default async function page() {
         <div className="container mx-auto">
           <div className="partner-wrapper grid grid-cols-1 gap-20">
             {pageData.items.value.map((item: any, idx: number) => {
+              //category items
               return (
                 <div className="" key={idx}>
                   <div className=" text-center mb-5">
@@ -78,12 +79,22 @@ export default async function page() {
                   <div className="">
                     <div className="flex flex-wrap justify-center gap-8">
                       {item.items.value.map((partner: any, iIdx: number) => {
+                        const sizes = [
+                          "w-[340px] h-[210px]", // 1 - Main Partner
+                          "w-[310px] h-[190px]", // 2 - Strategic Partner
+                          "w-[280px] h-[170px]", // 3 - Titanium Sponsor
+                          "w-[250px] h-[145px]", // 4 - Diamond Sponsor
+                          "w-[190px] h-[120px]", // 5 - Platinum Sponsors
+                        ];
+
+                        const sizeClass = sizes[idx] || "w-[180px] h-[110px]";
+
                         return (
                           <Link
                             href={partner.website.value}
                             target="_blank"
                             key={iIdx}
-                            className="flex items-center justify-center w-[220px] h-[120px] "
+                            className={`flex items-center justify-center ${sizeClass}`}
                           >
                             <div className="flex items-center justify-center">
                               <Image
@@ -91,7 +102,7 @@ export default async function page() {
                                 height={200}
                                 src={partner.logo.value[0]?.url}
                                 alt={partner.name.value}
-                                className=" object-contain aspect-video shadow-sm p-4"
+                                className="object-contain aspect-video shadow-sm p-4"
                               />
                             </div>
                           </Link>

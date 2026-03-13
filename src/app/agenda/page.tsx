@@ -3,6 +3,7 @@ import HeadBanner from "@/components/Blocks/HeadBanner";
 import Section from "@/components/UI/Section";
 import Globals from "@/modules/Globals";
 import React from "react";
+import AgendaComponent2 from "./AgendaComponent2";
 
 
 export async function generateMetadata() {
@@ -56,7 +57,8 @@ export default async function page() {
 
       <Section>
         <div className="container mx-auto">
-          <AgendaComponent eventId="6fb9b8ce-22cf-48ea-95c4-4d776e0e11f4" />
+          {/* <AgendaComponent eventId="6fb9b8ce-22cf-48ea-95c4-4d776e0e11f4" /> */}
+           <AgendaComponent2 eventId="6fb9b8ce-22cf-48ea-95c4-4d776e0e11f4" />
         </div>
       </Section>
     </div>
